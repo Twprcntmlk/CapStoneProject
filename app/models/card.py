@@ -1,6 +1,5 @@
 from .db import db
 from datetime import datetime
-from app.models import User, Collection, Deck, Card, Comment
 
 class Card(db.Model):
     __tablename__='cards'
@@ -9,6 +8,7 @@ class Card(db.Model):
     # deck_id = db.Column(db.Integer, db.ForeignKey(Deck.id))
     api_card_id = db.Column(db.Integer, nullable=False)
     api_card_name = db.Column(db.String)
+    api_card_desc = db.Column(db.String)
     api_card_type = db.Column(db.String)
     api_card_atk = db.Column(db.String)
     api_card_def = db.Column(db.String)
@@ -21,15 +21,15 @@ class Card(db.Model):
     count = db.Column(db.Integer, nullable=False)
 
     decks = db.relationship('Deck', back_populates='cards', cascade="all,delete")
-    collections= db.relationship('Collection', back_populates='cards ')
+    collections= db.relationship('Collection', back_populates='cards')
 
     def to_dict(self):
 
         return {
             'id': self.id,
-            'deck_id':self.deck_id,
             'api_card_id':self.api_card_id,
             'api_card_name':self.api_card_name,
+            'api_card_desc': self.api_card_desc,
             'api_card_type':self.api_card_type,
             'api_card_atk':self.api_card_atk,
             'api_card_def': self.api_card_def,

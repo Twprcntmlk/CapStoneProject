@@ -4,17 +4,17 @@ from flask_login import current_user, login_required
 
 card_routes = Blueprint('cards', __name__)
 
-@card_routes.route('/<int:collection_id>')
+@card_routes.route('/collection/<int:collection_id>')
 def get_cards(collection_id):
-    userId = int(current_user.id)
-    collectionCard = db.session.query(Card).filter(Collection.id == collection_id)
+    userId = 1
+    collectionCard = db.session.query(Card).filter(Card.id == Collection.card_id)
     cards = [ cards.to_dict() for cards in collectionCard ]
     return { 'cards':cards }
 
-@card_routes.route('/<int:deck_id>')
+@card_routes.route('/deck/<int:deck_id>')
 def get_deck_cards(deck_id):
-    userId = int(current_user.id)
-    deckCards = db.session.query(Card).filter(Deck.id == deck_id)
+    userId = 1
+    deckCards = db.session.query(Card).filter(Card.id == Deck.card_id)
     cards = [ cards.to_dict() for cards in deckCards ]
     return { 'cards':cards }
 

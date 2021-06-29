@@ -1,6 +1,8 @@
 from werkzeug.security import generate_password_hash
 from app.models import db, User
+from faker import Faker
 
+faker = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_users():
 
@@ -11,7 +13,7 @@ def seed_users():
 
     db.session.add(demo)
 
-    for i in range(2, 5):
+    for i in range(2, 6):
         hash_password = generate_password_hash('password')
         temp = User(f_name=faker.first_name(), l_name=faker.last_name(), username=faker.user_name(), email=faker.email(), hashed_password=hash_password, profile_image="https://secure.gravatar.com/avatar/35b3964ef953ef99791b7c98078d919e?secure=true&size=300", coin_balance=1000)
         db.session.add(temp)

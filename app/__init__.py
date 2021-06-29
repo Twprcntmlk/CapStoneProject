@@ -8,10 +8,9 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-
-from .api.collection_routes import collection_routes
 from .api.deck_routes import deck_routes
 from .api.card_routes import card_routes
+from .api.collection_routes import collection_routes
 from .api.comment_routes import comment_routes
 
 

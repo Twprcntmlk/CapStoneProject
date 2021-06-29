@@ -4,14 +4,14 @@ from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)
 
-@comments_routes.route('/')
+@comment_routes.route('/')
 def getting_comments():
     userId = int(current_user.id)
     userComment = db.session.query(Comment).order_by(Comment.created_at)
     comment = [comment.to_dict() for comment in userComment]
     return {'comment': comment}
 
-@comments_routes.route('/')
+@comment_routes.route('/')
 def adding_user_comments():
     res = request.get_json()
     userId = int(current_user.id)
@@ -20,7 +20,7 @@ def adding_user_comments():
     db.session.commit()
     return {'comment': [comment.to_dict()]}
 
-@comments_routes.route('/<int:comment_id>', methods=['PUT'])
+@comment_routes.route('/<int:comment_id>', methods=['PUT'])
 def editing_user_comments():
     res = request.get_json()
     userId = int(current_user.id)
@@ -29,7 +29,7 @@ def editing_user_comments():
     db.session.commit()
     return {'comment': [userComment.to_dict()]}
 
-@comments_routes.route('/<int:comment_id>', methods=['DELETE'])
+@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
 def deleting_user_comments(comment_id):
     userId = int(current_user.id)
     res = request.get_json()

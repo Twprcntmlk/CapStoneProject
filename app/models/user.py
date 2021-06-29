@@ -1,4 +1,4 @@
-from .db import db, User, Collection, Deck, Card, Comment
+from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -7,16 +7,16 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     f_name = db.Column(db.String(40), nullable=False)
-    l_last = db.Column(db.String(40), nullable=False)
+    l_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_image = db.Column(db.String(50))
+    profile_image = db.Column(db.String(255))
     coin_balance = db.Column(db.Integer, nullable=False)
 
-    collections = db.relationship('Collections', back_populates='users')
-    decks = db.relationship('Decks', back_populates='users')
-    comments = db.relationship('User', back_populates='user')
+    collections = db.relationship('Collection', back_populates='users')
+    decks = db.relationship('Deck', back_populates='users')
+    comments = db.relationship('Comment', back_populates='users')
 
     def to_dict(self):
 
@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
         return {
             "id": self.id,
             "f_name": self.f_name,
-            "l_last": self.l_name,
+            "l_name": self.l_name,
             "username": self.username,
             "email": self.email,
             "hashed_password": self.hashed_password,
@@ -36,7 +36,6 @@ class User(db.Model, UserMixin):
             "user_decks":  user_decks,
             "user_comments": user_comments,
             'user_collection': card_collection
-
         }
 
     @property

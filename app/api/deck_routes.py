@@ -8,9 +8,9 @@ deck_routes = Blueprint('decks', __name__)
 @deck_routes.route('/<int:deck_id>')
 def get_deck_cards(deck_id): #getting cards in deck
     userId = int(current_user.id)
-    deckCards = db.session.query(Deck).filter(Deck.id == deck_id)
-    cards = [ cards.to_dict() for cards in deckCards ]
-    return { 'cards':cards }
+    deckCards = db.session.query(Deck).filter(Deck.user_id == userId).all()
+    decks = [ cards.to_dict() for cards in deckCards ]
+    return { 'decks':decks }
 
 @deck_routes.route('/<int:card_id>', methods=['POST'])
 def add_card_to_deck (card_id):
