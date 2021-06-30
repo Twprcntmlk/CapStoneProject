@@ -1,0 +1,20 @@
+name: Python application
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        HEROKU_API_KEY: 1c7d3f1c-0488-4eeb-a547-14e096be4ef
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to Heroku Container registry
+      run: heroku container:login
+    - name: Build and push
+      run: heroku container:push -a https://capstone-ygo-gacha-project.herokuapp.com/ web
+    - name: Release
+      run: heroku container:release -a https://capstone-ygo-gacha-project.herokuapp.com/ web
+      
