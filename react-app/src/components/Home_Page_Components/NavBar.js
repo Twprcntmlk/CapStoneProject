@@ -6,11 +6,6 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-        {/* <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li> */}
         <li>
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
@@ -21,11 +16,6 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li> */}
         <li>
           <LogoutButton />
         </li>

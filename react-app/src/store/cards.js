@@ -4,9 +4,9 @@ const DELETE_CARD = "card/DELETE_CARD";
 const EDIT_CARD = "card/EDIT_CARD";
 
 
-  export const getCardAction = (user_id) => ({
+  export const getCardAction = (cards) => ({
     type: GET_CARDS,
-    user_id
+    cards
 
   })
 
@@ -31,12 +31,13 @@ const EDIT_CARD = "card/EDIT_CARD";
 
 
 
-  export const getCards = (card_id) => async (dispatch) => {
-    const response = await fetch(`/api/cards/:${card_id}`);
+  export const getCards = () => async (dispatch) => {
+    const response = await fetch('/api/cards/');
     const data = await response.json();
-    if (data.errors) return;
-    dispatch(getCardAction(data.channels));
-    return data.channels;
+    if (response.ok){
+      dispatch(getCardAction(data.cards));
+      // return data.cards;
+    }
   };
 
 
@@ -81,12 +82,12 @@ const EDIT_CARD = "card/EDIT_CARD";
     }
   };
 
-  const NormalizeServer = (cards) => {
-    const normServer = {}
+  const NormalizeCards = (cards) => {
+    const normCard = {}
     cards.forEach(card=> {
-        normServer[card.id] = card
+        normCard[card.id] = card
     })
-    return normServer
+    return normCard
 }
 
   const initialState = { cards: {} };
@@ -95,7 +96,7 @@ const EDIT_CARD = "card/EDIT_CARD";
     let newState;
     switch (action.type) {
       case GET_CARDS:
-        return { cards: NormalizeServer(action.payload) };
+        return { cards: NormalizeCards(action.cards) };
       case ADD_CARD:
         newState = { cards: { ...state.cards } }
         newState.cards[action.payload.id] = action.payload

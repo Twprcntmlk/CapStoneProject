@@ -4,18 +4,17 @@ from flask_login import current_user, login_required
 
 card_routes = Blueprint('cards', __name__)
 
-@card_routes.route('/collection/<int:collection_id>')
-def get_cards(collection_id):
-    userId = 1
-    collectionCard = db.session.query(Card).filter(Card.id == Collection.card_id)
-    cards = [ cards.to_dict() for cards in collectionCard ]
-    return { 'cards':cards }
+@card_routes.route('/')
+def get_cards():
+    userId = int(current_user.id)
+    all_cards = db.session.query(Card)
+    cards = [ cards.to_dict() for cards in all_cards]
+    return { 'cards': cards }
 
-@card_routes.route('/deck/<int:deck_id>')
-def get_deck_cards(deck_id):
-    userId = 1
-    deckCards = db.session.query(Card).filter(Card.id == Deck.card_id)
-    cards = [ cards.to_dict() for cards in deckCards ]
+@card_routes.route('/<int:card_id>')
+def get_deck_cards(card_id):
+    Cards = db.session.query(Card).filter(Card.api_id == card_id)
+    cards = [ cards.to_dict() for cards in Cards ]
     return { 'cards':cards }
 
 @card_routes.route('/<int:card_id>', methods=['POST'])
@@ -31,23 +30,15 @@ def add_card (card_id):
         addCard = Card(
         collection_id =res['collection_id'],
         deck_id = None,
-        api_card_id =res['id'],
-        api_card_name =res['name'],
-        api_card_type =res['type'],
-        api_card_desc =res['desc'],
-        api_card_atk =res['atk'],
-        api_card_def =res['def'],
-        api_card_level =res['level'],
-        api_card_race =res['race'],
-        api_card_attribute =res['attribute'],
-        api_card_sets =res['card_sets'],
-        api_card_images =res['card_images'],
-        api_card_prices =res['card_prices'],
-        count = 1)
-
+        api_id=api_id,
+        api_name= api_name,
+        api_set_name = api_set_name,
+        api_set_code = api_set_code,
+        api_set_rarity= api_set_rarity,
+        api_set_price = api_set_price)
         db.session.add(addCard)
         db.session.commit()
-        return { 'cards': addCard}
+        return { 'cards': addCard }
 
 @card_routes.route('/<int:card_id>', methods=['PUT'])
 def increase_card_count (card_id):

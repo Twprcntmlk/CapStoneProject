@@ -4,22 +4,13 @@ from datetime import datetime
 class Card(db.Model):
     __tablename__='cards'
     id = db.Column(db.Integer, primary_key=True)
-    # collection_id = db.Column(db.Integer, db.ForeignKey(Collection.id), nullable=False)
-    # deck_id = db.Column(db.Integer, db.ForeignKey(Deck.id))
-    api_card_id = db.Column(db.Integer, nullable=False)
-    api_card_name = db.Column(db.String)
-    api_card_desc = db.Column(db.String)
-    api_card_type = db.Column(db.String)
-    api_card_atk = db.Column(db.String)
-    api_card_def = db.Column(db.String)
-    api_card_level = db.Column(db.String)
-    api_card_race = db.Column(db.String)
-    api_card_attribute = db.Column(db.String)
-    api_card_sets = db.Column(db.String)
-    api_card_images = db.Column(db.String)
-    api_card_prices = db.Column(db.String)
-    count = db.Column(db.Integer, nullable=False)
 
+    api_id = db.Column(db.Integer)
+    api_name = db.Column(db.String)
+    api_set_name = db.Column(db.String)
+    api_set_code = db.Column(db.String)
+    api_set_rarity = db.Column(db.String)
+    api_set_price = db.Column(db.String)
     decks = db.relationship('Deck', back_populates='cards', cascade="all,delete")
     collections= db.relationship('Collection', back_populates='cards')
 
@@ -27,19 +18,12 @@ class Card(db.Model):
 
         return {
             'id': self.id,
-            'api_card_id':self.api_card_id,
-            'api_card_name':self.api_card_name,
-            'api_card_desc': self.api_card_desc,
-            'api_card_type':self.api_card_type,
-            'api_card_atk':self.api_card_atk,
-            'api_card_def': self.api_card_def,
-            'api_card_level': self.api_card_level,
-            'api_card_race':self.api_card_race,
-            'api_card_attribute':self.api_card_attribute,
-            'api_card_sets':self.api_card_sets,
-            'api_card_images':self.api_card_images,
-            'api_card_prices':self.api_card_prices,
-            'count':self.count
+            'api_id':self.api_id,
+            'api_name':self.api_name,
+            'api_set_name': self.api_set_name,
+            'api_set_code':self.api_set_code,
+            'api_set_rarity':self.api_set_rarity,
+            'api_set_price': self.api_set_price
         }
 
 # https://db.ygoprodeck.com/api/v7/cardinfo.php?id=6983839

@@ -30,8 +30,10 @@ const Pack_List_Page = () => {
         <p>PACK LIST PAGE</p>
         <div className = 'PackListPage_Container'>
             {ygocardsets?.map((el, idx) => (
-            <a href={`/pack-opener/${el.set_name}`} key={idx}>
-                <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
+            <div key={idx}>
+                <a href={`/pack-opener/${el.set_name}`}>
+                    <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
+                </a>
                 <div >
                     SETNAME: {`${el.set_name}`}
                     {separator}
@@ -39,11 +41,11 @@ const Pack_List_Page = () => {
                     {separator}
                     RELEASEDATE:{`${el.tcg_date}`}
                 </div>
-            </a>))}
+            </div>))}
         </div>
     </div>
 
   );
-}; 
+};
 
 export default Pack_List_Page;
