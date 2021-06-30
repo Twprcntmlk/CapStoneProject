@@ -44,6 +44,6 @@ const Pack_List_Page = () => {
     </div>
 
   );
-};
+}; 
 
 export default Pack_List_Page;
