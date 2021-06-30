@@ -11,6 +11,7 @@ import SignUpForm from "../Auth_Components/SignUpForm";
 import NavBar from "./NavBar";
 import UsersList from "./UsersList";
 import User from "./User";
+import ChromeDinoGame from 'react-chrome-dino';
 
 const Home_Page = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,9 @@ const Home_Page = () => {
         <NavBar />
         <LoginForm />
         <SignUpForm />
+        <ChromeDinoGame />
         {/* <UsersList/> */}
-        <User />
+        {/* <User /> */}
     </div>
   );
 }

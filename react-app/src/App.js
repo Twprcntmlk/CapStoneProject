@@ -42,7 +42,7 @@ function App() {
         <Route path="/pack-opener" exact={true} >
           <Pack_List_Page />
         </Route>
-        <Route path="/pack-opener/:id" exact={true} >
+        <Route path="/pack-opener/:code" exact={true} >
           <Pack_List_Opener_Page />
         </Route>
         {/* <ProtectedRoute path="/pack-opener" exact={true} >

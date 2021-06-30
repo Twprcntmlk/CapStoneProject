@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 const separator = <div className="separator__div"></div>
 
 const Pack_List_Page = () => {
@@ -20,21 +21,26 @@ const Pack_List_Page = () => {
   // Note to self: this works but give me packs i do not want. (el.tcg_date >= "2002-03-08") && (el.tcg_date <= "2004-03-01")
   useEffect(() =>{
     YGOAPIFetch()
-  },[]);
+  });
 
 
 
   return (
-    <div className="sidebar__div">
+    <div className='PackListPage'>
         <p>PACK LIST PAGE</p>
-        {ygocardsets?.map((el, idx) => (
-        <div key={idx}>
-            <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
-            <div >
-                {`${el.set_name}`}
-            </div>
+        <div className = 'PackListPage_Container'>
+            {ygocardsets?.map((el, idx) => (
+            <a href={`/pack-opener/${el.set_name}`} key={idx}>
+                <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
+                <div >
+                    SETNAME: {`${el.set_name}`}
+                    {separator}
+                    NUMofCARDS: {`${el.num_of_cards}`}
+                    {separator}
+                    RELEASEDATE:{`${el.tcg_date}`}
+                </div>
+            </a>))}
         </div>
-                ))}
     </div>
 
   );
