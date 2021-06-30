@@ -6,7 +6,7 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/')
 def getting_comments():
-    userId = int(current_user.id)
+    userId = 1
     userComment = db.session.query(Comment).order_by(Comment.created_at)
     comment = [comment.to_dict() for comment in userComment]
     return {'comment': comment}

@@ -14,7 +14,6 @@ class Comment(db.Model):
     decks = db.relationship('Deck', back_populates='comments')
 
     def to_dict(self):
-        card_collection = [card.to_dict() for card in self.cards if self.card_id == card.id]
 
         return {
             'id': self.id,
@@ -23,5 +22,4 @@ class Comment(db.Model):
             'comments': self.comments,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'card_collection': card_collection
         }

@@ -44,7 +44,6 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
       dispatch(addCollectionAction(data.collection));
 
     }
-    return data;
   }
 // Likely, I will not need this because if card is NOT in collection
 // I will add to collection otherwise only card count will be edited
@@ -63,13 +62,11 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 //   }
 
 
-  const NormalizeData = (data) => {
-    const normData = {};
-    data.forEach((e) => {
-      normData[e.id] = e;
-    });
-    return normData;
-  };
+const NormalizeServer = (collections) => {
+  const normServer = {}
+  collections.forEach(collection=> {normServer[collection.id] = collection})
+  return normServer
+}
 
   const initialState = { collections: {} };
 
@@ -77,7 +74,7 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
     let newState;
     switch (action.type) {
       case GET_COLLECTION:
-        return { channels: NormalizeData(action.payload) };
+        return { collections: NormalizeServer(action.payload) };
       case ADD_COLLECTION:
         newState = { collections: { ...state.collections } }
         newState.collections[action.payload.id] = action.payload

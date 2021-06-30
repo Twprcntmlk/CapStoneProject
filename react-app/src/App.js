@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+
+////////////////////////////////////////////////////////////
+
+import ProtectedRoute from "./components/Auth_Components/ProtectedRoute";
+////////////////////////////////////////////////////////////////////
+import Home_Page from "./components/Home_Page_Components/index";
+import Pack_List_Page from "./components/Pack_Opener_Components/index";
+import Pack_List_Opener_Page from "./components/Pack_Opener_Components/Pack_List_Opener_Page";
+////////////////////////////////////////////////////////////////////
+
+
+
+
 import { authenticate } from "./store/session";
 
 function App() {
@@ -27,23 +34,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+
       <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
+        <Route path="/" exact={true} >
+          < Home_Page />
         </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
+        <Route path="/pack-opener" exact={true} >
+          <Pack_List_Page />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/pack-opener/:id" exact={true} >
+          <Pack_List_Opener_Page />
+        </Route>
+        {/* <ProtectedRoute path="/pack-opener" exact={true} >
+          < Pack_Opener_Page />
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

@@ -24,6 +24,7 @@ export const getAllUsers = () => async (dispatch) => {
     const response = await fetch(`/api/users/`)
     if (response.ok){
         const data = await response.json();
+        console.log("getAllUsers", data.users)
         //note: should return {"users": [user.to_dict() for user in users]}
         dispatch(getUserAction(data.users))
     } else {
@@ -47,7 +48,7 @@ export const editUser = (username,email,image,password,repeatPassword) => async 
     }
 }
 
-export const deleteUser = () => async (dispatch) => {
+export const deleteUser = (username,email,image,password,repeatPassword) => async (dispatch) => {
 
     const response = await fetch(`/api/users/`, {
         method: 'PUT',
@@ -74,6 +75,7 @@ const NormalizeUser= (users) => {
 
 //Reducer
 const initialState = { users: {} }
+let newState;
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USERS:

@@ -15,7 +15,7 @@ class Deck(db.Model):
 
 
     def to_dict(self):
-        # card_deck = [card.to_dict() for card in self.cards if cards.id == self.card_id]
+        card_deck = [card.to_dict() for card in self.cards if self.card_id == card.id]
 
         return {
             'id': self.id,
@@ -23,5 +23,5 @@ class Deck(db.Model):
             'card_id': self.card_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            # 'card_deck':self.card_deck
+            'card_deck':self.card_deck
         }
