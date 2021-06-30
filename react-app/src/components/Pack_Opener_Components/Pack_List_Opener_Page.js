@@ -15,7 +15,7 @@ const Pack_List_Opener_Page = () => {
     const response = await fetch(api);
     const jsonData = await response.json();
 
-    setYgocardsets(filteredjsonData);
+    // setYgocardsets(filteredjsonData);
   };
 
   // Note to self: this works but give me packs i do not want. (el.tcg_date >= "2002-03-08") && (el.tcg_date <= "2004-03-01")
