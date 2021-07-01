@@ -12,7 +12,7 @@ def getting_user_collection():
     return {'collection': collection}
 
 
-@collection_routes.route('/')
+@collection_routes.route('/', methods=['POST'])
 def add_user_collection():
     userId = int(current_user.id)
     res = request.get_json()

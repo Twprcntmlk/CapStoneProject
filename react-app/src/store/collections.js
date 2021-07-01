@@ -21,17 +21,17 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
 
   export const getCollection = (card_id) => async (dispatch) => {
-    const response = await fetch('/api/cards/');
+    const response = await fetch('/api/collections/');
     const data = await response.json();
     if (data.errors){
         return data;
     } else {
-    dispatch(getCollectionAction(data.collection));
+    dispatch(getCollectionAction(data.collections));
     }
   };
 
   export const addCollection = (card_id) => async (dispatch) => {
-    const response = await fetch('/api/cards/', {
+    const response = await fetch('/api/collections/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addCollectionAction(data.collection));
+      dispatch(addCollectionAction(data.collections));
 
     }
   }

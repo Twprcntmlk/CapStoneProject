@@ -7,6 +7,8 @@ const separator = <div className="separator__div"></div>
 
 const Pack_List_Opener_Page = () => {
     const dispatch = useDispatch();
+    const name = useParams();
+    console.log("NAME of PARAM",name['code'])
     //////////////////////////
     useEffect(() =>{
         // YGOAPIFetch()
@@ -15,29 +17,21 @@ const Pack_List_Opener_Page = () => {
     ///////////////////////////
     const cards = useSelector((state) => state.card.cards);
     const cardsToArray = Object.values(cards)
-    const [cardsA, setCardsA] = useState()
     const cardIds = cardsToArray?.map((el)=> el.api_id)
-    console.log(cardIds)
 
 
+    const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
+      // console.log("cardsAPIid",cardsAPIid)
+      // console.log("cardsAPIid",cardIds)
+    // let randomNineCards = []
+    // for(let i=0; i<9; i++){
 
-   useEffect(() =>{
-    if(cardIds){
-        let randomNineCards = []
-        for(let i=0; i<9; i++){
-            let random = Math.floor(Math.random() * cardIds.length)
-            console.log(random)
-            randomNineCards.push(cardIds[random])
-        }
-        setCardsA(randomNineCards)
-    }
-
-   },[])
+    //     let random = Math.floor(Math.random() * cardIds.length)
+    //     randomNineCards.push(cardIds[random])
+    // }
+    // console.log("THIS IS UNDEFINED?",randomNineCards)
 
 
-   if (cardIds){
-    console.log("THIS IS UNDEFINED?",cardsA)
-}
 //   const YGOAPIFetch = async () => {
 //     const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${cardId}`
 //     const response = await fetch(api);
@@ -66,14 +60,17 @@ const Pack_List_Opener_Page = () => {
 
   return (
     <div className="PackListOpenerPage">
-
         <p>PACK LIST PAGE</p>
-        {cardsA?.map((el, idx) => (
-            <div key={idx}>
-                <Flippable_Card id={el}/>
-            </div>
-        ))}
-    </div>
+        {/* <Flippable_Card id={cardIds}/> */}
+        {/* <Flippable_Card id={cardIds}/>
+        <Flippable_Card id={cardIds}/>
+        <Flippable_Card id={cardIds}/> */}
+        {cardIds?.map((el, idx) => (
+        <div key={idx}>
+          <Flippable_Card id={el}/>
+        </div>
+              ))}
+        </div>
 
   );
 };

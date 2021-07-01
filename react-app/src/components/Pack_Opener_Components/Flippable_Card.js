@@ -8,13 +8,20 @@ import "../css/FlipCard.css"
 import ReactCardFlip from 'react-card-flip';
 
 const separator = <div className="separator__div"></div>
+let random = Math.floor(Math.random() * 9)
 
 const Flippable_Card = ({id}) => {
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
     const [apicardinfo, setApicardinfo] = useState()
     const [cardinfo, setCardinfo] = useState()
+
     const [flippedstate, setFlippedstate] = useState()
 
+    console.log("PASS",id)
+
+    //
+    // let randomCard = id[random]
+    // console.log(randomCard)
 
     const YGOAPIFetch = async () => {
         if(id){
@@ -37,26 +44,12 @@ const Flippable_Card = ({id}) => {
         const Acard = data.cards
         setCardinfo(Acard[0]);
     };
+    console.log("This is card info",cardinfo);
 
-    const handleClick = (e) => {
-        e.preventDefault();
+    let handleClick = () => {
         setFlippedstate(true);
-        // const data = dispatch(addCollection(cardinfo[0].id));
+        dispatch(addCollection(cardinfo.id));
       }
-
-    console.log(cardinfo)
-    // atk: 1200
-    // attribute: "DARK"
-    // card_images: [{…}]
-    // card_prices: [{…}]
-    // card_sets: (5) [{…}, {…}, {…}, {…}, {…}]
-    // def: 800
-    // desc: "It's said that this King of the Netherworld once had the power to rule over the dark."
-    // id: 53375573
-    // level: 3
-    // name: "Dark King of the Abyss"
-    // race: "Fiend"
-    // type: "Normal Monster"
 
   return (
     <div className="PackListOpenerPage">
@@ -65,7 +58,7 @@ const Flippable_Card = ({id}) => {
 
             <img onClick={handleClick} src={CardBack} />
 
-            <div onClick={handleClick} >
+            <div>
             {apicardinfo?.map((el, idx) => (
                  <div key={idx}>
                 <img src={el.card_images[0].image_url}  />
