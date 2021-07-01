@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    /* border-color: aqua; */
+    /* border-style: solid; */
+}
+
+
+.MainPage_Main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 5% 30px 5% ;
+}
+
+.MainPage_Main{
+    margin: 30px 2% 30px 5% ;
+}
+.MainPage_Main_Game--title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPage_Main_Game--title h1{
+    margin: 0;
+}
+
+.MainPage_Main_Game--title span{
+    border-top: 1px solid;
+    margin-bottom: 10px;
+}
+
+.MainPage_Main_Collection{
+    margin: 30px 1% 30px 1% ;
+}
+
+.MainPage_Main_Collection--title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPage_Main_Collection--title h1{
+    margin: 0;
+}
+
+.MainPage_Main_Collection--title span{
+    border-top: 1px solid;
+    margin-bottom: 10px;
+}
+
+.MainPage_Main_PackOpener{
+    margin: 30px 5% 30px 2% ;
+
+}
+.MainPage_Main_PackOpener--title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPage_Main_PackOpener--title span{
+    border-top: 1px solid;
+    margin-bottom: 10px;
+}
+
+.MainPage_Main_PackOpener--title h1{
+    margin: 0;
+}
+
+.MainPage_Main_PackOpener--button{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPage_Splash{
+    overflow: hidden;
+    margin: 10px 0px 10px 0px;
+}
+
+.slidingBackground{
+    background: url("../images/Banner.png") repeat-x;
+    animation: slide 90s linear infinite;
+
+}
+
+
+@keyframes slide {
+    0%{
+      transform: translate3d(0, 0, 0);
+    }
+    100%{
+      transform: translate3d(-1292px, 0, 0); /* The image width */
+    }
+  }
+
+.button {
+    border-radius: 10px;
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button:hover {
+      opacity: 0.6
+    }

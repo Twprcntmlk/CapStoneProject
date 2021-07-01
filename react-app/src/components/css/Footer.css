@@ -1,0 +1,64 @@
+.footerContainer{
+    display: flex;
+    justify-content: space-around;
+    background-color:#b2591a;
+    border-top: 1px solid black;
+    padding: 5px;
+}
+
+.footerLeft{
+    display: flex;
+    flex-direction: column;
+}
+.footerLeft h1{
+    /* align-self: center; */
+    /* margin: 15px; */
+    color: Black;
+    font-size: 16px;
+    border-bottom: 1px solid Black;
+}
+
+.namesGrid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 0px;
+}
+.namesGrid p{
+    display:flex;
+    margin: 5px;
+    color: Black;
+    justify-content: center;
+    align-items: center;
+}
+
+.namesGrid i{
+    margin: 2px;
+}
+
+.namesGrid i:hover{
+    color: Black;
+}
+
+.footerRight{
+    display: flex;
+    color: Black;
+    align-self: center;
+}
+.footerRight h1{
+    font-size: 24px;
+    align-self: center;
+}
+.footerRight i{
+    align-self: center;
+    margin: 5px;
+}
+.footerRight:hover{
+    color: Black;
+}
+
+.footerImage{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
