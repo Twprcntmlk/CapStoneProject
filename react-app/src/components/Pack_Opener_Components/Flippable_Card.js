@@ -17,7 +17,7 @@ const Flippable_Card = ({id}) => {
 
     const [flippedstate, setFlippedstate] = useState()
 
-    console.log("PASS",id)
+    console.log("PASS",id.api_id)
 
     //
     // let randomCard = id[random]
@@ -25,7 +25,7 @@ const Flippable_Card = ({id}) => {
 
     const YGOAPIFetch = async () => {
         if(id){
-        const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${id}`
+        const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${id.api_id}`
         const response = await fetch(api);
         const jsonData = await response.json();
         setApicardinfo(jsonData.data);
@@ -38,7 +38,7 @@ const Flippable_Card = ({id}) => {
     },[]);
 
     const CardFetch = async () => {
-        const api = `/api/cards/${id}`
+        const api = `/api/cards/${id}` //http://localhost:5000/api/cards/${id}
         const response = await fetch(api);
         const data = await response.json();
         const Acard = data.cards

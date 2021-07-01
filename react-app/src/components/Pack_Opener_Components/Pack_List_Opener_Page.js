@@ -17,8 +17,9 @@ const Pack_List_Opener_Page = () => {
     ///////////////////////////
     const cards = useSelector((state) => state.card.cards);
     const cardsToArray = Object.values(cards)
-    const cardIds = cardsToArray?.map((el)=> el.api_id)
-
+    console.log(cardsToArray)
+    const cardIds = cardsToArray?.filter((el)=> el.api_set_name === name['code'])
+    console.log(cardIds)
 
     const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
       // console.log("cardsAPIid",cardsAPIid)
