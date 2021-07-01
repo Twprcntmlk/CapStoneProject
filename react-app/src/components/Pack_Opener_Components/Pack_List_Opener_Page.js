@@ -6,23 +6,38 @@ import Flippable_Card from "../Pack_Opener_Components/Flippable_Card"
 const separator = <div className="separator__div"></div>
 
 const Pack_List_Opener_Page = () => {
-
     const dispatch = useDispatch();
-    const { code } = useParams();
     //////////////////////////
+    useEffect(() =>{
+        // YGOAPIFetch()
+        dispatch(getCards())
+      },[dispatch]);
+    ///////////////////////////
     const cards = useSelector((state) => state.card.cards);
     const cardsToArray = Object.values(cards)
-    //////////////////////////////////
-    const [ygocardsets, setYgocardsets] = useState()
-
-
-    const cardIds = cardsToArray.map((el)=> el.api_id)
+    const [cardsA, setCardsA] = useState()
+    const cardIds = cardsToArray?.map((el)=> el.api_id)
     console.log(cardIds)
-    console.log(ygocardsets)
 
 
 
+   useEffect(() =>{
+    if(cardIds){
+        let randomNineCards = []
+        for(let i=0; i<9; i++){
+            let random = Math.floor(Math.random() * cardIds.length)
+            console.log(random)
+            randomNineCards.push(cardIds[random])
+        }
+        setCardsA(randomNineCards)
+    }
 
+   },[])
+
+
+   if (cardIds){
+    console.log("THIS IS UNDEFINED?",cardsA)
+}
 //   const YGOAPIFetch = async () => {
 //     const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${cardId}`
 //     const response = await fetch(api);
@@ -32,12 +47,6 @@ const Pack_List_Opener_Page = () => {
 //   };
 
   // Note to self: this works but give me packs i do not want. (el.tcg_date >= "2002-03-08") && (el.tcg_date <= "2004-03-01")
-  useEffect(() =>{
-    // YGOAPIFetch()
-    dispatch(getCards())
-  },[dispatch]);
-
-
 
 
 // {id: 34541863, name: "\"A\" Cell Breeding Device", type: "Spell Card", desc: "During each of your Standby Phases, put 1 A-Counter on 1 face-up monster your opponent controls.", race: "Conti
@@ -59,8 +68,10 @@ const Pack_List_Opener_Page = () => {
     <div className="PackListOpenerPage">
 
         <p>PACK LIST PAGE</p>
-        {cardIds?.map((el, idx) => (
-            <Flippable_Card id={el}/>
+        {cardsA?.map((el, idx) => (
+            <div key={idx}>
+                <Flippable_Card id={el}/>
+            </div>
         ))}
     </div>
 

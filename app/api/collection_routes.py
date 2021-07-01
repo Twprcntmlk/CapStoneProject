@@ -16,6 +16,7 @@ def getting_user_collection():
 def add_user_collection():
     userId = int(current_user.id)
     res = request.get_json()
+    print(res['card_id'])
     addCollection = Collection(
          user_id= userId,
          card_id= res['card_id'])

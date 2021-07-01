@@ -2,19 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
+import {addCollection} from "../../store/collections"
+import CardBack from "../images/back_high.jpg"
+import "../css/FlipCard.css"
+import ReactCardFlip from 'react-card-flip';
 
 const separator = <div className="separator__div"></div>
 
 const Flippable_Card = ({id}) => {
-
-    const [flipcard, setFlipcard] = useState()
+    const dispatch = useDispatch
+    const [apicardinfo, setApicardinfo] = useState()
     const [cardinfo, setCardinfo] = useState()
+    const [flippedstate, setFlippedstate] = useState()
+
 
     const YGOAPIFetch = async () => {
+        if(id){
         const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${id}`
         const response = await fetch(api);
         const jsonData = await response.json();
-        setFlipcard(jsonData.data);
+        setApicardinfo(jsonData.data);
+        }
     };
 
     useEffect(() =>{
@@ -26,10 +34,17 @@ const Flippable_Card = ({id}) => {
         const api = `/api/cards/${id}`
         const response = await fetch(api);
         const data = await response.json();
-        setCardinfo(data.cards);
+        const Acard = data.cards
+        setCardinfo(Acard[0]);
     };
-    console.log(cardinfo)
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        setFlippedstate(true);
+        // const data = dispatch(addCollection(cardinfo[0].id));
+      }
+
+    console.log(cardinfo)
     // atk: 1200
     // attribute: "DARK"
     // card_images: [{…}]
@@ -43,31 +58,24 @@ const Flippable_Card = ({id}) => {
     // race: "Fiend"
     // type: "Normal Monster"
 
-    console.log(flipcard)
   return (
     <div className="PackListOpenerPage">
-        <p>CARD</p>
-        <div>
-        {flipcard?.map((el, idx) => (
-            <div key={idx}>
-                <img src={el.card_images[0].image_url}/>
 
-            </div>
+        <ReactCardFlip isFlipped={flippedstate} flipDirection="vertical" flipSpeedBackToFront="2">
+
+            <img onClick={handleClick} src={CardBack} />
+
+            <div onClick={handleClick} >
+            {apicardinfo?.map((el, idx) => (
+                 <div key={idx}>
+                <img src={el.card_images[0].image_url}  />
+                </div>
         ))}
-
-        {cardinfo?.map((el, idx) => (
-            <div key={idx}>
-                {el.api_set_rarity}
-                {el.api_set_price}
-            </div>
-        ))}
-
-cardinfo
-
         </div>
 
-
+        </ReactCardFlip>
     </div>
+
 
   );
 };
