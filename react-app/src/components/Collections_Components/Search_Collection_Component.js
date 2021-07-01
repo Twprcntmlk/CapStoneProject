@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import {getCollection} from "../../store/collections";
 
 const SearchBar= () => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const SearchBar= () => {
 
   const [point, setPoints] = useState(false)
 
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.collection.collections);
 
   //Need to Break this down, I am getting the whole API right now
   // const YGOAPIFetch = async () => {
@@ -19,10 +20,9 @@ const SearchBar= () => {
   //   setYgodata(jsonData);
   // };
 
-//   useEffect(() =>{
-//     dispatch(getAllUsers)
-//     // YGOAPIFetch()
-//   },[dispatch]);
+  useEffect(() =>{
+    dispatch(getCollection())
+  },[dispatch]);
 
   return (
     <div className="SearchHolder">

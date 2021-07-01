@@ -11,10 +11,11 @@ class Collection(db.Model):
     cards= db.relationship('Card', back_populates='collections')
 
     def to_dict(self):
-        card_collection = [collection.to_dict() for collection in self.collections if collection.card_id == card.id]
+        card_collection = [card.to_dict() for card in self.cards if self.user_id == self.users.id]
         return {
             'id': self.id,
             'user_id': self.user_id,
             'card_id': self.card_id,
             'card_collection': self.card_collection
         }
+

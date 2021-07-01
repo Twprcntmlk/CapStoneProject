@@ -34,6 +34,7 @@ const EDIT_CARD = "card/EDIT_CARD";
   export const getCards = () => async (dispatch) => {
     const response = await fetch('/api/cards/');
     const data = await response.json();
+    console.log("HELLO_________________________CARDS",response)
     if (response.ok){
       dispatch(getCardAction(data.cards));
       // return data.cards;

@@ -11,8 +11,10 @@ class Card(db.Model):
     api_set_code = db.Column(db.String)
     api_set_rarity = db.Column(db.String)
     api_set_price = db.Column(db.String)
+
     decks = db.relationship('Deck', back_populates='cards', cascade="all,delete")
     collections= db.relationship('Collection', back_populates='cards')
+
 
     def to_dict(self):
 

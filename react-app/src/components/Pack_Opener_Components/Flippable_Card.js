@@ -38,12 +38,13 @@ const Flippable_Card = ({id}) => {
     },[]);
 
     const CardFetch = async () => {
-        const api = `/api/cards/${id}` //http://localhost:5000/api/cards/${id}
+        const api = `/api/cards/${id.api_id}` //http://localhost:5000/api/cards/${id}
         const response = await fetch(api);
         const data = await response.json();
         const Acard = data.cards
         setCardinfo(Acard[0]);
     };
+    
     console.log("This is card info",cardinfo);
 
     let handleClick = () => {

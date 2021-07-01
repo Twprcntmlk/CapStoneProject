@@ -2,9 +2,9 @@ const GET_COLLECTION = "channel/GET_COLLECTION";
 const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 // const EDIT_COLLECTION = "channel/EDIT_COLLECTION";
 
-  export const getCollectionAction = (card_id) => ({
+  export const getCollectionAction = (collections) => ({
     type: GET_COLLECTION,
-    card_id
+    payload: collections
 
   })
 
@@ -22,11 +22,10 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
   export const getCollection = (card_id) => async (dispatch) => {
     const response = await fetch('/api/collections/');
+    console.log("HELLO_________________________",response)
     const data = await response.json();
-    if (data.errors){
-        return data;
-    } else {
-    dispatch(getCollectionAction(data.collections));
+    if (response.ok){
+      dispatch(getCollectionAction(data.collections));
     }
   };
 
@@ -41,6 +40,7 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
     if (response.ok) {
       const data = await response.json();
+
       dispatch(addCollectionAction(data.collections));
 
     }
