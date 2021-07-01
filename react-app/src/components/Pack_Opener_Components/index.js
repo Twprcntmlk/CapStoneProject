@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import "../css/PackOpener.css"
 const separator = <div className="separator__div"></div>
 
 const Pack_List_Page = () => {
@@ -27,10 +28,11 @@ const Pack_List_Page = () => {
 
   return (
     <div className='PackListPage'>
-        <p>PACK LIST PAGE</p>
+        <div>HEADER</div>
+
         <div className = 'PackListPage_Container'>
             {ygocardsets?.map((el, idx) => (
-            <div key={idx}>
+            <div className="PackListPage_Card" key={idx}>
                 <a href={`/pack-opener/${el.set_name}`}>
                     <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
                 </a>

@@ -1,0 +1,18 @@
+.Navbar_Container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 2% 0px 2%;
+    padding: 10px;
+
+
+}
+
+.title{
+    margin: 0;
+    color: #F4F4F2;
+}
+
+.Navbar_Holder{
+    background-color:#19181f;
+}

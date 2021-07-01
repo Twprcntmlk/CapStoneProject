@@ -11,7 +11,8 @@ import SignUpForm from "../Auth_Components/SignUpForm";
 import NavBar from "./NavBar";
 import UsersList from "./UsersList";
 import User from "./User";
-import ChromeDinoGame from 'react-chrome-dino';
+// import ChromeDinoGame from 'react-chrome-dino';
+// <ChromeDinoGame />
 import Footer from "./footer"
 import "../css/MainPage.css"
 import Banner from "../images/Banner.png"
@@ -88,13 +89,6 @@ const Home_Page = () => {
       <div className="MainPage_Footer">
         <Footer />
       </div>
-
-
-        <LoginForm />
-        <SignUpForm />
-        <ChromeDinoGame />
-        {/* <UsersList/> */}
-        {/* <User /> */}
     </div>
   );
 }

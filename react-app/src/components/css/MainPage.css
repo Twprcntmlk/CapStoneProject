@@ -81,12 +81,13 @@
 .MainPage_Splash{
     overflow: hidden;
     margin: 10px 0px 10px 0px;
+    height: 430px
 }
 
 .slidingBackground{
     background: url("../images/Banner.png") repeat-x;
     animation: slide 90s linear infinite;
-
+    height: 100%;
 }
 
 
@@ -95,7 +96,7 @@
       transform: translate3d(0, 0, 0);
     }
     100%{
-      transform: translate3d(-1292px, 0, 0); /* The image width */
+      transform: translate3d(-700px, 0, 0); /* The image width */
     }
   }
 

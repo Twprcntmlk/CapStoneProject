@@ -1,7 +1,7 @@
 .footerContainer{
     display: flex;
     justify-content: space-around;
-    background-color:#b2591a;
+    background-color:#19181f;
     border-top: 1px solid black;
     padding: 5px;
 }
@@ -13,9 +13,9 @@
 .footerLeft h1{
     /* align-self: center; */
     /* margin: 15px; */
-    color: Black;
+    color: #F4F4F2;
     font-size: 16px;
-    border-bottom: 1px solid Black;
+    border-bottom: 1px solid #F4F4F2;
 }
 
 .namesGrid{
@@ -26,7 +26,7 @@
 .namesGrid p{
     display:flex;
     margin: 5px;
-    color: Black;
+    color: #F4F4F2;
     justify-content: center;
     align-items: center;
 }
@@ -36,12 +36,12 @@
 }
 
 .namesGrid i:hover{
-    color: Black;
+    color: #d4d4d3;
 }
 
 .footerRight{
     display: flex;
-    color: Black;
+    color: #F4F4F2;
     align-self: center;
 }
 .footerRight h1{
@@ -53,7 +53,7 @@
     margin: 5px;
 }
 .footerRight:hover{
-    color: Black;
+    color: #d4d4d3;
 }
 
 .footerImage{

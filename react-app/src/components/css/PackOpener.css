@@ -1,0 +1,31 @@
+.PackListPage{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.PackListPage_Container{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.PackListPage_Card{
+
+    height: 600px;
+    width: 400px;
+}
+.PackListPage_Card a{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+
+}
+
+.PackListPage_Card div{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+
+}
