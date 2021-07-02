@@ -9,9 +9,6 @@ const CollectionPage = () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const [point, setPoints] = useState(false)
-
-  const user = useSelector((state) => state.session.user);
 
   //Need to Break this down, I am getting the whole API right now
   // const YGOAPIFetch = async () => {
@@ -20,11 +17,7 @@ const CollectionPage = () => {
   //   const jsonData = await response.json();
   //   setYgodata(jsonData);
   // };
-
-//   useEffect(() =>{
-//     dispatch(getAllUsers)
-//     // YGOAPIFetch()
-//   },[dispatch]);
+ 
 
   return (
     <div className="CollectionPageContainer">

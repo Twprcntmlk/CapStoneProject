@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import {getCollection} from "../../store/collections";
+import SearchedCard from "../Collections_Components/Search_Card_Component";
 
 const SearchBar= () => {
   const dispatch = useDispatch();
@@ -10,7 +11,14 @@ const SearchBar= () => {
 
   // const [point, setPoints] = useState(false)
   const [cardname, setCardname] = useState("");
-  const user = useSelector((state) => state.collection.collections);
+  const [usercollection, setUsercollection] = useState()
+  const [usercollectionfiltered, setUsercollectionfiltered] = useState()
+  const userCollectionState = useSelector((state) => state.session.user.user_collection);
+
+  useEffect(() =>{
+    setUsercollection(userCollectionState)
+    // YGOAPIFetch()
+  },[]);
 
   //Need to Break this down, I am getting the whole API right now
   // const YGOAPIFetch = async () => {
@@ -20,42 +28,41 @@ const SearchBar= () => {
   //   setYgodata(jsonData);
   // };
 
-  useEffect(() =>{
-    dispatch(getCollection())
-  },[dispatch]);
 
   const updateCardname = (e) => {
     setCardname(e.target.value);
+    const filteredSearch = usercollection.filter((el)=>el.api_name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setUsercollectionfiltered(filteredSearch)
   }
 
-  const onFindLikeCards = async (e) => {
-    e.preventDefault();
-    // const data = await dispatch(get(name, image));
-    // if (data) {
-    //   history.push(`/`);
-    // }
-  }
-
+  // const onFindLikeCards = async (e) => {
+  //   e.preventDefault();
+  //   // const data = await dispatch(get(name, image));
+  //   // if (data) {
+  //   //   history.push(`/`);
+  //   // }
+  // }
+  console.log(userCollectionState)
+  console.log(usercollection)
+  console.log(usercollectionfiltered)
   return (
     <div className="SearchHolder">
-      <form onChange={onFindLikeCards} className='collection_form'>
-        <div className='collection_div'>
-          <label htmlFor="name">Enter Card Name</label>
-          <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            value={cardname}
-            onChange={updateCardname}
-            className='collection_input'
-          />
-        </div>
-
-        <div className="create">
-          <button className="collection-button" type="submit">Create Server</button>
-        </div>
-    </form>
-
+      <div>
+        <label onChange={updateCardname} htmlFor="name">Enter Card Name</label>
+            <input
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={cardname}
+              onChange={updateCardname}
+              className='collection_input'
+            />
+      </div>
+      <div className="Search_Show_Results">
+      {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
+        <div key={idx}><SearchedCard api_id={el.api_id}/>{el.api_name}</div>
+      ))}
+      </div>
     </div>
   );
 }

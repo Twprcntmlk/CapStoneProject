@@ -24,8 +24,8 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
 
-        # user_collection = [collection.to_dict() for collection in self.collections if self.id == collection.user_id ]
-        # user_decks = [deck.to_dict() for deck in self.decks if self.id == deck.user_id ]
+        user_collection = [collection.to_dict() for collection in self.collections_cards  ]
+        user_decks = [deck.to_dict() for deck in self.decks_cards ]
         user_comments = [comment.to_dict() for comment in self.comments if self.id == comment.user_id ]
 
         return {
@@ -37,9 +37,9 @@ class User(db.Model, UserMixin):
             "hashed_password": self.hashed_password,
             "profile_image": self.profile_image,
             "coin_balance" : self.coin_balance,
-            "user_comments": user_comments
-            # "user_decks":  user_decks,
-            # "user_collection": card_collection,
+            "user_comments": user_comments,
+            "user_decks":  user_decks,
+            "user_collection": user_collection,
         }
 
     @property

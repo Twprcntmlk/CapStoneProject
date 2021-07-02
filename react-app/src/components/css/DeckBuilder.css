@@ -1,0 +1,191 @@
+.Main_Deck{
+    display:grid;
+    grid-template-areas:
+    "slot1 slot2 slot3 slot4 slot5 slot6 slot7 slot8 slot9 slot10"
+    "slot11 slot12 slot13 slot14 slot15 slot16 slot17 slot18 slot19 slot20"
+    "slot21 slot22 slot23 slot24 slot25 slot26 slot27 slot28 slot29 slot30"
+    "slot31 slot32 slot33 slot34 slot35 slot36 slot37 slot38 slot39 slot40"
+    "slot41 slot42 slot43 slot44 slot45 slot46 slot47 slot48 slot49 slot50"
+    "slot51 slot52 slot53 slot54 slot55 slot56 slot57 slot58 slot59 slot60";
+}
+
+#Main_Deck_Slot1{
+    grid-area: slot1;
+}
+#Main_Deck_Slot2{
+    grid-area: slot2;
+}
+#Main_Deck_Slot3{
+    grid-area: slot3;
+}
+#Main_Deck_Slot4{
+    grid-area: slot4;
+}
+#Main_Deck_Slot5{
+    grid-area: slot5;
+}
+#Main_Deck_Slot6{
+    grid-area: slot6;
+}
+#Main_Deck_Slot7{
+    grid-area: slot7;
+}
+#Main_Deck_Slot8{
+    grid-area: slot8;
+}
+#Main_Deck_Slot9{
+    grid-area: slot9;
+}
+#Main_Deck_Slot10 {
+    grid-area: slot10;
+}
+#Main_Deck_Slot11 {
+    grid-area: slot11;
+}
+#Main_Deck_Slot12 {
+    grid-area: slot12;
+}
+#Main_Deck_Slot13 {
+    grid-area: slot13;
+}
+#Main_Deck_Slot14 {
+    grid-area: slot14;
+}
+#Main_Deck_Slot15 {
+    grid-area: slot15;
+}
+#Main_Deck_Slot16 {
+    grid-area: slot16;
+}
+#Main_Deck_Slot17 {
+    grid-area: slot17;
+}
+#Main_Deck_Slot18 {
+    grid-area: slot18;
+}
+#Main_Deck_Slot19 {
+    grid-area: slot19;
+}
+#Main_Deck_Slot20 {
+    grid-area: slot20;
+}
+#Main_Deck_Slot21 {
+    grid-area: slot21;
+}
+#Main_Deck_Slot22 {
+    grid-area: slot22;
+}
+#Main_Deck_Slot23 {
+    grid-area: slot23;
+}
+#Main_Deck_Slot24 {
+    grid-area: slot24;
+}
+#Main_Deck_Slot25 {
+    grid-area: slot25;
+}
+#Main_Deck_Slot26 {
+    grid-area: slot26;
+}
+#Main_Deck_Slot27 {
+    grid-area: slot27;
+}
+#Main_Deck_Slot28 {
+    grid-area: slot28;
+}
+#Main_Deck_Slot29 {
+    grid-area: slot29;
+}
+#Main_Deck_Slot30 {
+    grid-area: slot30;
+}
+#Main_Deck_Slot31 {
+    grid-area: slot31;
+}
+#Main_Deck_Slot32 {
+    grid-area: slot32;
+}
+#Main_Deck_Slot33 {
+    grid-area: slot33;
+}
+#Main_Deck_Slot34 {
+    grid-area: slot34;
+}
+#Main_Deck_Slot35 {
+    grid-area: slot35;
+}
+#Main_Deck_Slot36 {
+    grid-area: slot36;
+}
+#Main_Deck_Slot37 {
+    grid-area: slot37;
+}
+#Main_Deck_Slot38 {
+    grid-area: slot38;
+}
+#Main_Deck_Slot39 {
+    grid-area: slot39;
+}
+#Main_Deck_Slot40 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot41 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot42 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot43 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot44 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot45 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot46 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot47 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot48 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot49 {
+    grid-area: slot4;
+}
+#Main_Deck_Slot50 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot51 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot52 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot53 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot54 {
+
+}
+#Main_Deck_Slot55 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot56 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot57 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot58 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot59 {
+    grid-area: slot5;
+}
+#Main_Deck_Slot60 {
+    grid-area: slot60;
+}
