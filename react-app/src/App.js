@@ -13,7 +13,7 @@ import CardFlipperPage from "./components/Pack_Opener_Components/Card_Flipper_Pa
 import GamePage from "./components/Game_Components/GamePage";
 import CollectionPage from "./components/Collections_Components/index";
 import CardPage from "./components/Card_Components/index";
-
+import AdminPage from "./components/Admin_Components/index";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -59,6 +59,9 @@ function App() {
         </Route>
         <Route path="/card/:id" exact={true}>
           <CardPage />
+        </Route>
+        <Route path="/admin" exact={true}>
+          <AdminPage />
         </Route>
       </Switch>
     </BrowserRouter>

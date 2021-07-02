@@ -18,9 +18,9 @@ class User(db.Model, UserMixin):
 
     # collections = db.relationship('Collection', back_populates='users')
     # decks = db.relationship('Deck', back_populates='users')
-    decks_cards = db.relationship('Card', secondary=decks, back_populates='decks_users')
-    collections_cards= db.relationship('Card', secondary=collections,  back_populates='collections_users')
-    comments = db.relationship('Comment', back_populates='users')
+    decks_cards = db.relationship('Card', secondary=decks, back_populates='decks_users',cascade="all,delete")
+    collections_cards= db.relationship('Card', secondary=collections,  back_populates='collections_users',cascade="all,delete")
+    comments = db.relationship('Comment', back_populates='users',cascade="all,delete")
 
     def to_dict(self):
 

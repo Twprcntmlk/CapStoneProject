@@ -13,7 +13,7 @@ def get_deck_cards(deck_id): #getting cards in deck
     return { 'decks':decks }
 
 @deck_routes.route('/<int:card_id>', methods=['POST'])
-def add_card_to_deck (card_id):
+def add_card_to_deck ():
     userId = int(current_user.id)
     res = request.get_json()
     #first see if the card is already in the collection and see if there are less than 3

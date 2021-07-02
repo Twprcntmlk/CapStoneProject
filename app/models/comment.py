@@ -10,7 +10,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now(),  server_onupdate=db.func.now())
 
-    users = db.relationship('User', cascade="all,delete", back_populates='comments')
+    users = db.relationship('User', back_populates='comments')
     cards = db.relationship('Card', back_populates='comments')
 
     def to_dict(self):

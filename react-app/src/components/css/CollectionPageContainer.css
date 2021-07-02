@@ -1,0 +1,15 @@
+.CollectionPageContainer{
+    display: grid;
+    grid-template-columns: 65% 10% 25%;
+    grid-template-rows: 100%;
+}
+
+.CollectionPageContainer_DeckBuilder{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.CollectionPageContainer_SearchBar{
+    grid-column: 3/4;
+    grid-row: 1/2;
+}

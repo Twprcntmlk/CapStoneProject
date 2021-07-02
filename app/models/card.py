@@ -15,7 +15,7 @@ class Card(db.Model):
 
     decks_users = db.relationship('User', secondary=decks, back_populates='decks_cards')
     collections_users= db.relationship('User', secondary=collections,  back_populates='collections_cards')
-    comments = db.relationship('Comment', back_populates='cards')
+    comments = db.relationship('Comment', back_populates='cards', cascade="all,delete")
 
     def to_dict(self):
 

@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import SearchBar from "./Search_Collection_Component"
-import DeckBuilder from "./DeckBuilder_Component";
+import AdminSearchBar from "./AdminSearchBar_Component"
+import AdminAddCard from "./AdminAddCard_Component";
 import "../css/CollectionPageContainer.css"
-const CollectionPage = () => {
+const AdminPage = () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -20,11 +20,11 @@ const CollectionPage = () => {
 
 
   return (
-    <div className="CollectionPageContainer">
-        <div className="CollectionPageContainer_SearchBar"><SearchBar/></div>
-        <div className="CollectionPageContainer_DeckBuilder"><DeckBuilder/></div>
+    <div className="AdminPageContainer">
+        <div className="AdminContainer_SearchBar"><AdminSearchBar/></div>
+        <div className="AdminContainer_AddCard"><AdminAddCard/></div>
     </div>
   );
 }
 
-export default CollectionPage;
+export default AdminPage;

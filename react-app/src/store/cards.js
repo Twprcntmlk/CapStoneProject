@@ -10,23 +10,20 @@ const EDIT_CARD = "card/EDIT_CARD";
 
   })
 
-  const addCardAction = (user_id,card_id) => ({
+  const addCardAction = (card) => ({
     type: ADD_CARD,
-    user_id,
-    card_id
+    payload: card
 
   });
 
-  const editCardAction = (user_id,card_id) => ({
+  const editCardAction = (cards) => ({
     type: EDIT_CARD,
-    user_id,
-    card_id
+    payload: cards
   });
 
-  const deleteCardAction = (user_id, card_id) => ({
+  const deleteCardAction = (card_id) => ({
     type: DELETE_CARD,
-    user_id,
-    card_id
+    payload: card_id
   });
 
 
@@ -34,7 +31,7 @@ const EDIT_CARD = "card/EDIT_CARD";
   export const getCards = () => async (dispatch) => {
     const response = await fetch('/api/cards/');
     const data = await response.json();
-    console.log("HELLO_________________________CARDS",response)
+
     if (response.ok){
       dispatch(getCardAction(data.cards));
       // return data.cards;
@@ -42,44 +39,45 @@ const EDIT_CARD = "card/EDIT_CARD";
   };
 
 
-  export const addCard = (data) => async (dispatch) => {
-    const response = await fetch(`/api/channels/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name: data.name, server_id: data.server_id })
-    })
-
-    if (response.ok) {
-      const data = await response.json();
-      dispatch(addCardAction(data));
-      return data;
-    }
-    return data;
-  }
-
-  export const editCard = (data) => async (dispatch) => {
+  export const addCard = (api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price) => async (dispatch) => {
     const response = await fetch(`/api/cards/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id: data.id, name: data.name, server_id: data.server_id })
+      body: JSON.stringify({ api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price })
     })
-
-    if (response.ok) {
-      data = await response.json()
-      return dispatch(editCardAction(data.id, data.name))
+    const data = await response.json();
+    if (data && data.errors) {
+      return data;
     }
+    dispatch(addCardAction(data.cards));
   }
 
-  export const deleteCard = (channelId, serverId) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${channelId}`, {
+  export const editCard = (cardId,api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${cardId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price })
+    })
+      const data = await response.json()
+      console.log(data.cards)
+      if (data && data.errors) {
+        return data;
+      }
+      console.log(data.cards)
+      dispatch(editCardAction(data.cards))
+    }
+
+
+  export const deleteCard = (cardId) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${cardId}`, {
       method: "DELETE"
     });
     if (response.ok) {
-      dispatch(deleteCardAction(channelId, serverId))
+      dispatch(deleteCardAction(cardId))
     }
   };
 
@@ -99,16 +97,19 @@ const EDIT_CARD = "card/EDIT_CARD";
       case GET_CARDS:
         return { cards: NormalizeCards(action.cards) };
       case ADD_CARD:
-        newState = { cards: { ...state.cards } }
+        newState = { cards: { ...state.cards} }
         newState.cards[action.payload.id] = action.payload
         return newState
       case EDIT_CARD:
-        newState = { ...state }
-        newState.card[action.id] = action.count
+
+        newState = { cards: { ...state.cards} }
+        console.log(newState)
+        newState.cards[action.payload.id] = action.payload
         return newState
       case DELETE_CARD:
-        newState = { ...state }
-        delete newState.cards[action.payload.id][action.payload]
+        newState = { cards: { ...state.cards} }
+
+        delete newState.cards[action.payload]
         return newState
       default:
         return state;
