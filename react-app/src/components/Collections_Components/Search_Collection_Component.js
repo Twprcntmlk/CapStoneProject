@@ -5,6 +5,8 @@ import { Redirect, useHistory } from "react-router-dom";
 import {getCollection} from "../../store/collections";
 import SearchedCard from "../Collections_Components/Search_Card_Component";
 // const { DragDropContext, Draggable, Droppable } = window.ReactBeautifulDnd;
+import Deck_Area from "./Deck_Area";
+import Card from "./Card";
 
 const SearchBar= () => {
   const dispatch = useDispatch();
@@ -60,7 +62,13 @@ const SearchBar= () => {
             />
       </div>
       <div className="Search_Show_Results">
-
+      <div className="flexbox">
+< Deck_Area id="deck-2" className="deck" draggable='true'>
+<Card id="card-2" className="card" draggable='true'>
+  <p>Card Two</p>
+</Card>
+</Deck_Area>
+</div>
         {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
           <div key={idx}><SearchedCard api_id={el.api_id}/>{el.api_name}</div>
         ))}

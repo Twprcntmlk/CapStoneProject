@@ -46,7 +46,9 @@ const SearchedCard = ({api_id}) => {
   return (
     <div className="SearchedCardContainer">
         <div className="SearchedCardContainer_CardDiv">
-            <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} />
+
+                <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} />
+
         </div>
     </div>
 // : "Skull Servant"

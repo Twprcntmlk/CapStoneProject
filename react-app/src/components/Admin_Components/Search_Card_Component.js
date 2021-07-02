@@ -14,8 +14,7 @@ const SearchedCard = ({api_id}) => {
 
     console.log("PASS",api_id)
 
-    // let randomCard = id[random]
-    // console.log(randomCard)
+
 
     const YGOAPIFetch = async () => {
         if(api_id){
@@ -23,7 +22,9 @@ const SearchedCard = ({api_id}) => {
         const response = await fetch(api);
         const jsonData = await response.json();
         const objectdata = jsonData.data
-        setApicardinfo(objectdata[0]);
+        if (objectdata){
+            setApicardinfo(objectdata[0])
+        }
         }
     };
 

@@ -1,16 +1,21 @@
 //imported utils
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState, useReducer, useCallback  } from "react";
+import { useDispatch, useSelector} from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import "../Collections_Components/DeckBuilder_Component"
-import "../css/DeckBuilder.css"
+import "../Collections_Components/DeckBuilder_Component";
+import "../css/DeckBuilder.css";
+import "../css/Deck_Area.css";
+import "../css/Card.css";
+
+
+import Deck_Area from "./Deck_Area";
+import Card from "./Card";
+
 const DeckBuilder = () => {
-  const dispatch = useDispatch();
   let history = useHistory();
 
-  const [point, setPoints] = useState(false)
 
-  const user = useSelector((state) => state.session.user);
+
 
   //Need to Break this down, I am getting the whole API right now
   // const YGOAPIFetch = async () => {
@@ -20,21 +25,17 @@ const DeckBuilder = () => {
   //   setYgodata(jsonData);
   // };
 
-//   useEffect(() =>{
-//     dispatch(getAllUsers)
-//     // YGOAPIFetch()
-//   },[dispatch]);
 
   return (
-    <div className="DeckBuilderHolder">
-        <div className="DeckBuilder">
-            <div className="Main_Deck">
-                <div id="Main_Deck_Slot">Main Deck</div>
-                <div id="Extra_Deck_Slot">Extra Deck</div>
-                <div id="Side_Deck_Slot">Side Deck </div>
-            </div>
-        </div>
+    <div className="flexbox">
+        <Deck_Area id="deck-1" className="deck" draggable='true'>
+          <Card id="card-1" className="card" draggable='true'>
+            <p>Card One</p>
+          </Card>
+        </Deck_Area>
     </div>
+
+
   );
 }
 
