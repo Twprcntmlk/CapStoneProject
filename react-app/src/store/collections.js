@@ -22,7 +22,6 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
   export const getCollection = (card_id) => async (dispatch) => {
     const response = await fetch('/api/collections/');
-    console.log("HELLO_________________________",response)
     const data = await response.json();
     if (response.ok){
       dispatch(getCollectionAction(data.collections));
@@ -37,14 +36,18 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
       },
       body: JSON.stringify({card_id})
     })
+    const data = await response.json();
 
-    if (response.ok) {
-      const data = await response.json();
-
-      dispatch(addCollectionAction(data.collections));
+    if (data && data.errors) {
+      console.log(data.errors)
+      return {}
 
     }
+    else {
+      dispatch(addCollectionAction(data.collections));
+    }
   }
+
 // Likely, I will not need this because if card is NOT in collection
 // I will add to collection otherwise only card count will be edited
 //   export const editCollection = (card_id) => async (dispatch) => {

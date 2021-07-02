@@ -1,4 +1,4 @@
-from app.models import db, User, Collection, Deck, Card, Comment
+from app.models import db, User, Card, Comment
 from faker import Faker
 faker = Faker()
 
@@ -7,7 +7,7 @@ def seed_comments():
 
     for i in range(1, 4):
         for j in range (1,4):
-            temp = Comment(user_id=i, deck_id= j, comments=faker.text())
+            temp = Comment(user_id=i, card_id=j, comments=faker.text())
             db.session.add(temp)
 
     db.session.commit()

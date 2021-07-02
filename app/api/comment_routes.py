@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, User, Collection, Deck, Card, Comment
+from app.models import db, User, Card, Comment
 from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)

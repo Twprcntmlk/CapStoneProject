@@ -8,8 +8,8 @@ const SearchBar= () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const [point, setPoints] = useState(false)
-
+  // const [point, setPoints] = useState(false)
+  const [cardname, setCardname] = useState("");
   const user = useSelector((state) => state.collection.collections);
 
   //Need to Break this down, I am getting the whole API right now
@@ -24,15 +24,37 @@ const SearchBar= () => {
     dispatch(getCollection())
   },[dispatch]);
 
+  const updateCardname = (e) => {
+    setCardname(e.target.value);
+  }
+
+  const onFindLikeCards = async (e) => {
+    e.preventDefault();
+    // const data = await dispatch(get(name, image));
+    // if (data) {
+    //   history.push(`/`);
+    // }
+  }
+
   return (
     <div className="SearchHolder">
-        <div className="SearchBar">
-            SearchBar
+      <form onChange={onFindLikeCards} className='collection_form'>
+        <div className='collection_div'>
+          <label htmlFor="name">Enter Card Name</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="Name"
+            value={cardname}
+            onChange={updateCardname}
+            className='collection_input'
+          />
         </div>
 
-        <div className="Search Display">
-            Search Display
+        <div className="create">
+          <button className="collection-button" type="submit">Create Server</button>
         </div>
+    </form>
 
     </div>
   );

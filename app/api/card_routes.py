@@ -1,15 +1,17 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, User, Collection, Deck, Card, Comment
+from app.models import db, User, Card, Comment
 from flask_login import current_user, login_required
+from sqlalchemy.sql.expression import func
 
 card_routes = Blueprint('cards', __name__)
 
 @card_routes.route('/')
 def get_cards():
     userId = int(current_user.id)
-    all_cards = db.session.query(Card)
+    all_cards = db.session.query(Card).order_by(func.random()).limit(9).all()
     cards = [ cards.to_dict() for cards in all_cards]
     return { 'cards': cards }
+
 
 @card_routes.route('/<int:card_id>')
 def get_deck_cards(card_id):

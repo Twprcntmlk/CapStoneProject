@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .collection import collections
+from .deck import decks
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -14,8 +16,10 @@ class User(db.Model, UserMixin):
     profile_image = db.Column(db.String(255))
     coin_balance = db.Column(db.Integer, nullable=False)
 
-    collections = db.relationship('Collection', back_populates='users')
-    decks = db.relationship('Deck', back_populates='users')
+    # collections = db.relationship('Collection', back_populates='users')
+    # decks = db.relationship('Deck', back_populates='users')
+    decks_cards = db.relationship('Card', secondary=decks, back_populates='decks_users')
+    collections_cards= db.relationship('Card', secondary=collections,  back_populates='collections_users')
     comments = db.relationship('Comment', back_populates='users')
 
     def to_dict(self):

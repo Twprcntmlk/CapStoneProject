@@ -1,4 +1,4 @@
-from app.models import db, User, Collection, Deck, Card, Comment
+from app.models import db, User, Card, Comment
 from faker import Faker
 faker = Faker()
 

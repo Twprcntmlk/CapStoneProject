@@ -7,19 +7,15 @@ import CardBack from "../images/back_high.jpg"
 import "../css/FlipCard.css"
 import ReactCardFlip from 'react-card-flip';
 
-const separator = <div className="separator__div"></div>
-let random = Math.floor(Math.random() * 9)
-
 const Flippable_Card = ({id}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [apicardinfo, setApicardinfo] = useState()
     const [cardinfo, setCardinfo] = useState()
-
     const [flippedstate, setFlippedstate] = useState()
 
     console.log("PASS",id.api_id)
 
-    //
     // let randomCard = id[random]
     // console.log(randomCard)
 
@@ -44,32 +40,41 @@ const Flippable_Card = ({id}) => {
         const Acard = data.cards
         setCardinfo(Acard[0]);
     };
-    
-    console.log("This is card info",cardinfo);
+
+    console.log("This is card info",apicardinfo);
 
     let handleClick = () => {
         setFlippedstate(true);
         dispatch(addCollection(cardinfo.id));
       }
 
+    const toCard = () => {
+        history.push(`/card/${apicardinfo[0].id}`);
+      }
+
+
   return (
-    <div className="PackListOpenerPage">
-
+    <div className="CardOpenerPage">
         <ReactCardFlip isFlipped={flippedstate} flipDirection="vertical" flipSpeedBackToFront="2">
-
-            <img onClick={handleClick} src={CardBack} />
-
-            <div>
+        <div className="CardOpenerPage_CardDiv">
+            <img className="CardOpenerPage_Card" onClick={handleClick} src={CardBack} />
+        </div>
+        <div className="CardOpenerPage_CardDiv">
             {apicardinfo?.map((el, idx) => (
-                 <div key={idx}>
-                <img src={el.card_images[0].image_url}  />
-                </div>
-        ))}
+            <div onClick={toCard}>
+                <img key={idx} className="CardOpenerPage_Card" src={el.card_images[0].image_url} />
+                <div>{cardinfo?.api_set_rarity}-{cardinfo?.api_set_price}</div>
+            </div>
+            ))}
         </div>
 
         </ReactCardFlip>
     </div>
-
+// : "Skull Servant"
+// api_set_code: "LOB-004"
+// api_set_name: "Legend of Blue Eyes White Dragon"
+// api_set_price: "2.88"
+// api_set_rarity: "Common"
 
   );
 };
