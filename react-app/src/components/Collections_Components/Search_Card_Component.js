@@ -4,7 +4,7 @@ import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
 import {addCollection} from "../../store/collections"
 import CardBack from "../images/back_high.jpg"
-import "../css/FlipCard.css"
+import "../css/SearchedCardContainer.css"
 
 
 const SearchedCard = ({api_id}) => {

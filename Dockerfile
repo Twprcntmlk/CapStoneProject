@@ -28,3 +28,6 @@ RUN pip install psycopg2
 
 # Run flask environment
 CMD gunicorn app:app
+
+#   heroku run -a capstone-ygo-gacha-project flask db upgrade
+ #  heroku run -a capstone-ygo-gacha-project flask seed all
