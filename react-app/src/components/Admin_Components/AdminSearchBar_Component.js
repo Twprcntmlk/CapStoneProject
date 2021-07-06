@@ -36,6 +36,9 @@ const AdminSearchBar= () => {
 
   const updateCardname = (e) => {
     setCardname(e.target.value);
+    const filteredSearch = cardValues.filter((el)=>el.api_name.toLowerCase().includes(e.target.value.toLowerCase()))
+
+    setUsercollectionfiltered(filteredSearch)
   }
 
   const onDeleteCard= async (e) => {
@@ -62,7 +65,7 @@ const AdminSearchBar= () => {
       </div>
       <div className="Search_Show_Results">
 
-        {cardValues && cardValues.map((el, idx) =>(
+        {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
           <div key={idx}>
             <div>{el.api_name}</div>
             <CardEditFormModal cardId = {el.id}/>

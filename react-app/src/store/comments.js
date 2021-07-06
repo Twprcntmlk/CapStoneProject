@@ -1,111 +1,110 @@
-const GET_DECKS = "deck/GET_DECKS"
-const ADD_DECK = "deck/ADD_DECK"
-const EDIT_DECK = "deck/EDIT_DECK"
-const DELETE_DECK = "deck/DELETE_DECK"
+const GET_COMMENTS = "comment/GET_COMMENTS"
+const ADD_COMMENT = "commentADD_COMMENT"
+const EDIT_COMMENT= "comment/EDIT_COMMENT"
+const DELETE_COMMENT = "comment/DELETE_COMMENT"
 
-  export const getDeckAction = (user_id) => ({
-    type: GET_DECKS,
-    user_id
-
+  export const getCommentsAction = (comments) => ({
+    type: GET_COMMENTS,
+    payload: comments
   })
 
-  const addDeckAction = (user_id,card_id) => ({
-    type: ADD_DECK,
-    user_id,
-    card_id
+  const addCommentAction = (comment) => ({
+    type: ADD_COMMENT,
+    payload: comment
 
   });
 
-  const editDeckAction = (user_id,card_id) => ({
-    type: EDIT_DECK,
-    user_id,
-    card_id
+  const editCommentAction = ( comment) => ({
+    type: EDIT_COMMENT,
+    payload: comment
+
   });
 
-  const deleteDeckAction = (user_id, card_id) => ({
-    type: DELETE_DECK,
-    user_id,
-    card_id
+  const deleteCommentAction = (comment_id) => ({
+    type: DELETE_COMMENT,
+    payload: comment_id
   });
 
 
 
-  export const getDecks = (card_id) => async (dispatch) => {
-    const response = await fetch(`/api/decks`);
+  export const getComments = () => async (dispatch) => {
+    const response = await fetch(`/api/comments`);
     const data = await response.json();
     if (data.errors) return;
-    dispatch(getDeckAction(data.decks));
-    return data.decks;
+    dispatch(getCommentsAction(data.comments));
   };
 
 
-  export const addDeck = (data) => async (dispatch) => {
-    const response = await fetch(`/api/decks/`, {
+  export const addComment = (comment, card_id) => async (dispatch) => {
+    console.log("store",comment, card_id )
+    const response = await fetch(`/api/comments/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: data.name, server_id: data.server_id })
+      body: JSON.stringify({comment, card_id})
     })
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(addDeckAction(data));
-      return data;
+      console.log(data.comment)
+      dispatch(addCommentAction(data.comment));
     }
-    return data;
+    // return data.comment;
   }
 
-  export const editDeck = (data) => async (dispatch) => {
-    const response = await fetch(`/api/decks/`, {
-      method: 'POST',
+  export const editComment = (comment,comment_id) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${comment_id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id: data.id, name: data.name, server_id: data.server_id })
+      body: JSON.stringify({ comment,comment_id })
     })
-
+    let data = await response.json()
     if (response.ok) {
-      data = await response.json()
-      return dispatch(editDeckAction(data.id, data.name))
+      console.log(data.comment )
+      dispatch(editCommentAction(data.comment))
     }
   }
 
-  export const deleteDeck = (channelId, serverId) => async (dispatch) => {
-    const response = await fetch(`/api/decks`, {
+  export const deleteComment = (comment_id) => async (dispatch) => {
+    console.log("deleteComment",comment_id)
+    const response = await fetch(`/api/comments/${comment_id}`, {
       method: "DELETE"
     });
+
     if (response.ok) {
-      dispatch(deleteDeckAction(channelId, serverId))
+      dispatch(deleteCommentAction(comment_id))
     }
   };
 
-  const NormalizeServer = (decks) => {
-    const normServer = {}
-    decks.forEach(deck=> {
-        normServer[deck.id] = deck
+  const NormalizeComment = (comments) => {
+    const normComment = {}
+    comments.forEach(comment=> {
+        normComment[comment.id] = comment
     })
-    return normServer
+    return normComment
 }
 
-  const initialState = { decks: {} };
+  const initialState = { comments: {} };
 
   export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
-      case GET_DECKS:
-        return { decks: NormalizeServer(action.payload) };
-      case ADD_DECK:
-        newState = { decks: { ...state.decks } }
-        newState.decks[action.payload.id] = action.payload
+      case GET_COMMENTS:
+        return { comments: NormalizeComment(action.payload) };
+      case ADD_COMMENT:
+        newState = { comments: { ...state.comments } }
+        newState.comments[action.payload.id] = action.payload
         return newState
-      case EDIT_DECK:
-        newState = { ...state }
-        newState.deck[action.id] = action.payload
+      case EDIT_COMMENT:
+        newState = { comments: { ...state.comments } }
+        newState.comments[action.payload.id] = action.payload
         return newState
-      case DELETE_DECK:
-        newState = { ...state }
-        delete newState.decks[action.payload.id][action.payload]
+      case DELETE_COMMENT:
+        newState = { comments: { ...state.comments} }
+        delete newState.comments[action.payload]
         return newState
       default:
         return state;

@@ -21,7 +21,6 @@ const CardFlipperPage = () => {
     const cardsToArray = Object.values(cards)
     console.log(cardsToArray)
     const cardIds = cardsToArray?.filter((el)=> el.api_set_name === name['code'])
-    console.log(cardIds)
 
     const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
 
@@ -37,6 +36,11 @@ const CardFlipperPage = () => {
       history.push("/game");
     }
 
+    function get_random (cardIds) {
+      return cardIds[Math.floor((Math.random()*cardIds.length))];
+    }
+
+
 
   return (
     <div className="CardFlipperPage ">
@@ -47,7 +51,7 @@ const CardFlipperPage = () => {
         <h1>{name['code']}</h1>
       </div>
       <div className="CardFlipperPage_Body">
-      {cardIds?.map((el, idx) => (<div key={idx}> <Flippable_Card id={el}/> </div>  ))}
+      {cardIds?.map((el, idx) => (<div key={idx}> <Flippable_Card id={get_random(cardIds)}/> </div>  ))}
       </div>
       <div className="CardFlipperPage_OptionsBar">
         <button className="CardFlipperPage_button button" onClick={toPackList} >Buy Another Pack</button>

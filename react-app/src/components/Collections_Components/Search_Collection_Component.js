@@ -23,15 +23,6 @@ const SearchBar= () => {
     // YGOAPIFetch()
   },[]);
 
-  //Need to Break this down, I am getting the whole API right now
-  // const YGOAPIFetch = async () => {
-  //   const api = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-  //   const response = await fetch(api);
-  //   const jsonData = await response.json();
-  //   setYgodata(jsonData);
-  // };
-
-
   const updateCardname = (e) => {
     setCardname(e.target.value);
     const filteredSearch = usercollection.filter((el)=>el.api_name.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -48,6 +39,7 @@ const SearchBar= () => {
   console.log(userCollectionState)
   console.log(usercollection)
   console.log(usercollectionfiltered)
+
   return (
     <div className="SearchHolder">
       <div>
@@ -65,7 +57,11 @@ const SearchBar= () => {
       <div className="flexbox">
         < Deck_Area id="deck-2" className="deck" draggable='true'>
           {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
-            <div key={idx}> <Card id={`$card-${idx}`} className="card" draggable='true'><SearchedCard api_id={el.api_id}/>{el.api_name}  </Card></div>
+            <div key={idx}>
+              <Card id={`$card-${idx}`} className="card" draggable='true' >
+                <SearchedCard api_id={el.api_id} />{el.api_name}
+              </Card>
+            </div>
             ))}
 
 

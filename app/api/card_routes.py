@@ -8,9 +8,16 @@ card_routes = Blueprint('cards', __name__)
 @card_routes.route('/')
 def get_cards():
     userId = int(current_user.id)
-    all_cards = db.session.query(Card).order_by(func.random()).limit(9).all()
+    all_cards = db.session.query(Card)
     cards = [ cards.to_dict() for cards in all_cards]
     return { 'cards': cards }
+
+# @card_routes.route('/random')
+# def get_random_cards():
+#     userId = int(current_user.id)
+#     all_cards = db.session.query(Card).order_by(func.random()).limit(9).all()
+#     cards = [ cards.to_dict() for cards in all_cards]
+#     return { 'cards': cards }
 
 
 @card_routes.route('/<int:card_id>')

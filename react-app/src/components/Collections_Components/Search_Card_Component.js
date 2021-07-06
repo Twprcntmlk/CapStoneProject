@@ -12,6 +12,7 @@ const SearchedCard = ({api_id}) => {
     const history = useHistory()
     const [apicardinfo, setApicardinfo] = useState()
 
+
     console.log("PASS",api_id)
 
     // let randomCard = id[random]
@@ -41,13 +42,13 @@ const SearchedCard = ({api_id}) => {
     // const toCard = () => {
     //     history.push(`/card/${apicardinfo[0].id}`);
     //   }
-
+console.log(apicardinfo?.card_images[0].image_url)
 
   return (
-    <div className="SearchedCardContainer">
-        <div className="SearchedCardContainer_CardDiv">
+    <div className="SearchedCardContainer" styles={{backgroundImage:`url(${apicardinfo?.card_images[0].image_url})`}}>
+        <div className="SearchedCardContainer_CardDiv" >
 
-                <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} />
+                {/* <img className="SearchedCardContainer_Image" src={} /> */}
 
         </div>
     </div>

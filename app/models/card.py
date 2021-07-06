@@ -14,8 +14,8 @@ class Card(db.Model):
     api_set_price = db.Column(db.String)
 
     decks_users = db.relationship('User', secondary=decks, back_populates='decks_cards')
-    collections_users= db.relationship('User', secondary=collections,  back_populates='collections_cards')
-    comments = db.relationship('Comment', back_populates='cards', cascade="all,delete")
+    collections_users= db.relationship('User', secondary=collections, back_populates='collections_cards')
+    comments = db.relationship('Comment', back_populates='cards')
 
     def to_dict(self):
 

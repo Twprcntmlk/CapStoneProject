@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
 
         user_collection = [collection.to_dict() for collection in self.collections_cards  ]
         user_decks = [deck.to_dict() for deck in self.decks_cards ]
-        user_comments = [comment.to_dict() for comment in self.comments if self.id == comment.user_id ]
+        user_comments = [comment.to_dict() for comment in self.comments ]
 
         return {
             "id": self.id,

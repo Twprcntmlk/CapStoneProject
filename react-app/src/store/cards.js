@@ -103,7 +103,6 @@ const EDIT_CARD = "card/EDIT_CARD";
       case EDIT_CARD:
 
         newState = { cards: { ...state.cards} }
-        console.log(newState)
         newState.cards[action.payload.id] = action.payload
         return newState
       case DELETE_CARD:

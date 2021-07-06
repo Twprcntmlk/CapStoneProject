@@ -1,0 +1,77 @@
+.CardInfoPage{
+    display:flex;
+    flex-direction:column;
+}
+
+.CardInfoPage_Info{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin: 7% 5% 2% 5%;
+}
+
+.cardrow{
+    border:1px solid;
+}
+.CardInfoPage_CardInfo{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    width: 35%;
+}
+
+.CardInfoPage_Info img {
+    height:390px;
+    width:267px;
+}
+.CardInfoPage_CardInfo div{
+    margin:0px 5% 0px;
+    padding:3%;
+    display:flex;
+    justify-content:space-between;
+
+}
+
+#LevelStar{
+    height:20px;
+    width:20px;
+}
+
+.CardInfoPage_CommentSection{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin: 0% 25% 5% 25%;
+}
+
+.CardInfoPage_CommentSection--title{
+    display:flex;
+    justify-content:center;
+    border:2px solid;
+}
+.CardInfoPage_CommentSection{
+    border:2px solid;
+}
+
+.CardInfoPage_CommentSection--comments{
+    border:1px solid;
+}
+
+.Comment_Form{
+    display:flex;
+    flex-direction: row;
+}
+
+.comment_div{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+textarea{
+    width:90%;
+
+}
+.comment-button{
+    width:10%;
+}
