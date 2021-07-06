@@ -45,10 +45,10 @@ const SearchedCard = ({api_id}) => {
 console.log(apicardinfo?.card_images[0].image_url)
 
   return (
-    <div className="SearchedCardContainer" styles={{backgroundImage:`url(${apicardinfo?.card_images[0].image_url})`}}>
+    <div className="SearchedCardContainer" >
         <div className="SearchedCardContainer_CardDiv" >
 
-                {/* <img className="SearchedCardContainer_Image" src={} /> */}
+                <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} draggable="false" />
 
         </div>
     </div>

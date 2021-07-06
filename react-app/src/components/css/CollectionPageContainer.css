@@ -1,15 +1,28 @@
 .CollectionPageContainer{
     display: grid;
-    grid-template-columns: 65% 10% 25%;
+    grid-template-columns: 65% 5% 30%;
     grid-template-rows: 100%;
+
 }
 
 .CollectionPageContainer_DeckBuilder{
     grid-column: 1/2;
     grid-row: 1/2;
+
 }
+
+.CollectionPageContainer_Divider{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-image: url('../images/CardBackBorder.png');
+    background-size:105px 140px;
+    margin-top:15px;
+
+}
+
 
 .CollectionPageContainer_SearchBar{
     grid-column: 3/4;
     grid-row: 1/2;
+
 }

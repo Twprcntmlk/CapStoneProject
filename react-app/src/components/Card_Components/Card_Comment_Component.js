@@ -51,12 +51,12 @@ const CardComment = ({APIid}) => {
 
 
 
-    const onCommentDelete = async (e) =>{
-        const comment_id = e.target.value
-        console.log(comment_id)
-        const data = await dispatch(deleteComment(comment_id))
+    // const onCommentDelete = async (e) =>{
+    //     const comment_id = e.target.value
+    //     console.log(comment_id)
+    //     const data = await dispatch(deleteComment(comment_id))
 
-    }
+    // }
 
     // useEffect
     useEffect(() =>{
@@ -64,8 +64,9 @@ const CardComment = ({APIid}) => {
       dispatch(getCards())
     },[dispatch]);
 
-
-
+    const currentuserId = useSelector(state => state.session.user.id)
+    console.log(currentuserId)
+console.log(ThisCardComments)
    return (
       <div className="CardInfoPage_CommentSection">
 
@@ -77,11 +78,10 @@ const CardComment = ({APIid}) => {
               <div>{el.user_id}</div>
               <div>{el.comments}</div>
             </div>
-            <div>
 
-              {<CardForm comment_id={el.id}/>}
+             <div>
+             {currentuserId===el.user_id ? <CardForm comment_id={el.id}/> : null }
 
-              <button value = {el.id} onClick={onCommentDelete}>Delete</button>
             </div>
           </div>
         ))}

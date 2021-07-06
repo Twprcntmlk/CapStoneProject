@@ -17,13 +17,17 @@ const AdminPage = () => {
   //   const jsonData = await response.json();
   //   setYgodata(jsonData);
   // };
-
+  const toHome = () => {
+    history.push("/");
+    }
 
   return (
     <div className="AdminPageContainer">
         <div className="AdminContainer_SearchBar"><AdminSearchBar/></div>
         <div className="AdminContainer_AddCard"><AdminAddCard/></div>
+        <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
     </div>
+
   );
 }
 

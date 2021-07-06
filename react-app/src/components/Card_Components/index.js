@@ -41,6 +41,12 @@ const CardPage = () => {
         history.push("/game");
       }
 
+    const toHome = () => {
+      history.push("/");
+      }
+
+
+
     // useEffect
     useEffect(() =>{
       YGOAPIFetch()
@@ -48,7 +54,7 @@ const CardPage = () => {
       dispatch(getCards())
     },[]);
 
-
+    console.log("WHERE IS THIS______________",apicardinfo)
    return (
     <div className="CardInfoPage">
       <div className="CardInfoPage_Banner"></div>
@@ -64,7 +70,8 @@ const CardPage = () => {
             <div><img id="LevelStar" src={LevelStar}></img>{apicardinfo?.level}</div>
           </div>
           <div id="CardInfo--row2" className="cardrow"><div>{apicardinfo?.type} / ID: {apicardinfo?.id}</div><div>{apicardinfo?.attribute}</div></div>
-          <div id="CardInfo--row3" className="cardrow">ATK/{apicardinfo?.atk} DEF/{apicardinfo?.def}</div>
+          {apicardinfo?.type === ("Magic Card") || apicardinfo?.type === ("Trap Card") || apicardinfo?.type === ("Spell Card")  ? null : <div id="CardInfo--row3" className="cardrow">ATK/{apicardinfo?.atk} DEF/{apicardinfo?.def}</div>}
+
           <div id="CardInfo--row4" className="cardrow">{apicardinfo?.desc}</div>
           <div id="CardInfo--row5" className="cardrow"> Archetype:{apicardinfo?.race}</div>
         </div>
@@ -96,6 +103,7 @@ const CardPage = () => {
         <button className="CardFlipperPage_button button" onClick={toPackList} >Buy Another Pack</button>
         <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
         <button className="CardFlipperPage_button button" onClick={toGame} >Play a Game</button>
+        <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
       </div>
     </div>
 

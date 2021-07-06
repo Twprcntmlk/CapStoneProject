@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import {getCollection} from "../../store/collections";
 import SearchedCard from "../Collections_Components/Search_Card_Component";
-// const { DragDropContext, Draggable, Droppable } = window.ReactBeautifulDnd;
+import "../css/SearchedCardContainer.css"
 import Deck_Area from "./Deck_Area";
 import Card from "./Card";
 
@@ -42,7 +42,7 @@ const SearchBar= () => {
 
   return (
     <div className="SearchHolder">
-      <div>
+      <div className="Searchbar_Container">
         <label onChange={updateCardname} htmlFor="name">Enter Card Name</label>
             <input
               name="name"
@@ -59,7 +59,7 @@ const SearchBar= () => {
           {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
             <div key={idx}>
               <Card id={`$card-${idx}`} className="card" draggable='true' >
-                <SearchedCard api_id={el.api_id} />{el.api_name}
+                <SearchedCard api_id={el.api_id} />
               </Card>
             </div>
             ))}

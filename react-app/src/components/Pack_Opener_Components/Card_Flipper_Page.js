@@ -21,7 +21,7 @@ const CardFlipperPage = () => {
     const cardsToArray = Object.values(cards)
     console.log(cardsToArray)
     const cardIds = cardsToArray?.filter((el)=> el.api_set_name === name['code'])
-
+    console.log(cardIds)
     const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
 
     const toPackList = () => {
@@ -34,6 +34,10 @@ const CardFlipperPage = () => {
 
     const toGame = () => {
       history.push("/game");
+    }
+
+    const toMain = () => {
+      history.push("/");
     }
 
     function get_random (cardIds) {
@@ -51,12 +55,13 @@ const CardFlipperPage = () => {
         <h1>{name['code']}</h1>
       </div>
       <div className="CardFlipperPage_Body">
-      {cardIds?.map((el, idx) => (<div key={idx}> <Flippable_Card id={get_random(cardIds)}/> </div>  ))}
+      {cardIds.slice(0,9)?.map((el, idx) => (<div key={idx}> <Flippable_Card id={get_random(cardIds)}/> </div>  ))}
       </div>
       <div className="CardFlipperPage_OptionsBar">
         <button className="CardFlipperPage_button button" onClick={toPackList} >Buy Another Pack</button>
         <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
         <button className="CardFlipperPage_button button" onClick={toGame} >Play a Game</button>
+        <button className="CardFlipperPage_button button" onClick={toMain} >Back to Main</button>
       </div>
 
     </div>

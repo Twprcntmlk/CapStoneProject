@@ -8,13 +8,23 @@
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
+
 }
 
+.PackListPage_Pack{
 
+    height: 450px;
+    width: 257px;
+}
 .PackListPage_Card{
-
+    display:flex;
+    flex-direction: column;
     height: 600px;
     width: 400px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    align-items:center;
+
 }
 .PackListPage_Card a{
     display:flex;
@@ -25,7 +35,9 @@
 
 .PackListPage_Card div{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content:center;
+    align-items:center;
+    font-size: 1.2em;
 
 }

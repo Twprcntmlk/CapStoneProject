@@ -2,3 +2,18 @@
     height: 178px;
     width: 124px;
 }
+
+.Searchbar_Container {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 15px;
+}
+.Searchbar_Container label{
+    font-size:50px;
+}
+
+.Searchbar_Container input{
+    font-size:25px;
+    width: 97%;
+}

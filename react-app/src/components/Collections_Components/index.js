@@ -32,8 +32,9 @@ const CollectionPage = () => {
 
   return (
     <div className="CollectionPageContainer">
-      
+
             <div className="CollectionPageContainer_SearchBar"><SearchBar/></div>
+            <div className="CollectionPageContainer_Divider"> </div>
             <div className="CollectionPageContainer_DeckBuilder"><DeckBuilder/></div>
 
     </div>

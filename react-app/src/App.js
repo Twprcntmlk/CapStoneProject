@@ -39,12 +39,12 @@ function App() {
         <Route path="/" exact={true} >
           < Home_Page />
         </Route>
-        <Route path="/pack-opener" exact={true} >
+        <ProtectedRoute path="/pack-opener" exact={true} >
           <Pack_List_Page />
-        </Route>
-        <Route path="/pack-opener/:code" exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path="/pack-opener/:code" exact={true} >
           <CardFlipperPage />
-        </Route>
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/pack-opener" exact={true} >
           < Pack_Opener_Page />
          <Route path="/pack-opener/:code" exact={true} >
@@ -54,15 +54,15 @@ function App() {
         <Route path="/game" exact={true}>
           <GamePage />
         </Route>
-        <Route path="/collection" exact={true}>
+        <ProtectedRoute path="/collection" exact={true}>
           <CollectionPage />
-        </Route>
+        </ProtectedRoute>
         <Route path="/card/:id" exact={true}>
           <CardPage />
         </Route>
-        <Route path="/admin" exact={true}>
+        <ProtectedRoute path="/admin" exact={true}>
           <AdminPage />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

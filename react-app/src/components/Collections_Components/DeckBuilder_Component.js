@@ -14,6 +14,21 @@ import Card from "./Card";
 const DeckBuilder = () => {
   let history = useHistory();
 
+  const toPackList = () => {
+    history.push("/pack-opener");
+  }
+
+  const toDeckBuilder = () => {
+    history.push("/collection");
+  }
+
+  const toGame = () => {
+    history.push("/game");
+  }
+
+  const toMain = () => {
+    history.push("/");
+  }
 
 
 
@@ -27,12 +42,20 @@ const DeckBuilder = () => {
 
 
   return (
-    <div className="flexbox">
-        <Deck_Area id="deck-1" className="deck" draggable='true'>
-          <Card id="card-1" className="card" draggable='true'>
-            <p>Card One</p>
-          </Card>
-        </Deck_Area>
+    <div>
+      <div className="DeckbuilderrPage_OptionsBar">
+          <button className="DeckbuilderPage_button button" onClick={toPackList} >Buy Another Pack</button>
+          <button className="DeckbuilderPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
+          <button className="DeckbuilderPage_button button" onClick={toGame} >Play a Game</button>
+          <button className="DeckbuilderPage_button button" onClick={toMain} >Back to Main</button>
+      </div>
+      <div className="flexbox">
+          <Deck_Area id="deck-1" className="deck" draggable='true'>
+            {/* <Card id="card-1" className="card" draggable='true'>
+              <p>Card One</p>
+            </Card> */}
+          </Deck_Area>
+      </div>
     </div>
 
 

@@ -8,6 +8,10 @@
     height: 254px;
 }
 
-.CardOpenerPage_CardInfo{
-
+.CardOpenerPage_CardDiv div{
+  font-size:1.2em;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

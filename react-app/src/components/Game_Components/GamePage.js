@@ -7,7 +7,7 @@ import { Redirec, useHistory } from "react-router-dom";
 //component imports
 
 import ChromeDinoGame from 'react-chrome-dino';
-
+import "../css/GamePage.css"
 
 
 
@@ -32,6 +32,14 @@ const GamePage = () => {
 //     // YGOAPIFetch()
 //   },[dispatch]);
 
+  const toDeckBuilder = () => {
+    history.push("/collection");
+  }
+
+  const toHome = () => {
+  history.push("/");
+  }
+
   window.addEventListener('click', () => {
     let points = 0;
     setInterval(() => {
@@ -41,12 +49,19 @@ const GamePage = () => {
   });
 
   return (
-    <div className="GamePageContainer">
-        <h1>THIS IS YU-GI-OH!</h1>
-        <h2>Please wait while Game Loads</h2>
-        <h3>Press Spacebar to Begin!</h3>
-        <ChromeDinoGame />
+    <div>
+      <div className="GamePageContainer">
+          <h1>THIS IS YU-GI-OH!</h1>
+          <h2>Please wait while Game Loads</h2>
+          <h3>Press Spacebar to Begin!</h3>
+          <div id="DinoGame"><ChromeDinoGame /></div>
+      </div>
+      <div className="CardFlipperPage_OptionsBar">
+        <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
+        <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
     </div>
+   </div>
+
   );
 }
 

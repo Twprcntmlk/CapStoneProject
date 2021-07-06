@@ -28,23 +28,21 @@ const Pack_List_Page = () => {
 
   return (
     <div className='PackListPage'>
-        <div>HEADER</div>
+      <div className = 'PackListPage_Container'>
+        {ygocardsets?.map((el, idx) => (
+        <div className="PackListPage_Card" key={idx}>
+          <a className="PackListPage_Pack" href={`/pack-opener/${el.set_name}`}>
+              <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
+          </a>
+          <div >
+              <div><b>Set Name:</b> {`${el.set_name}`}</div>
 
-        <div className = 'PackListPage_Container'>
-            {ygocardsets?.map((el, idx) => (
-            <div className="PackListPage_Card" key={idx}>
-                <a href={`/pack-opener/${el.set_name}`}>
-                    <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
-                </a>
-                <div >
-                    SETNAME: {`${el.set_name}`}
-                    {separator}
-                    NUMofCARDS: {`${el.num_of_cards}`}
-                    {separator}
-                    RELEASEDATE:{`${el.tcg_date}`}
-                </div>
-            </div>))}
-        </div>
+              <div><b># of Cards in Set:</b> {`${el.num_of_cards}`}</div>
+
+              <div><b>Release Date:</b> {`${el.tcg_date}`}</div>
+          </div>
+        </div>))}
+      </div>
     </div>
 
   );
