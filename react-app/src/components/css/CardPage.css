@@ -16,7 +16,7 @@
 .CardInfoPage_CardInfo{
     display:flex;
     flex-direction:column;
-    justify-content:space-around;
+    justify-content:space-between;
     width: 35%;
 }
 
@@ -74,4 +74,14 @@ textarea{
 }
 .comment-button{
     width:10%;
+}
+
+#CardInfo--row2 div {
+    margin: 0px;
+    padding: 0px;
+}
+
+#CardInfo--row1 div{
+    display:flex;
+    align-items: center;
 }

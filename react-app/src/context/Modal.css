@@ -100,3 +100,9 @@
   font-size: 1.2em;
   width: 100%;
 }
+
+.CloseModal{
+  display:flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}

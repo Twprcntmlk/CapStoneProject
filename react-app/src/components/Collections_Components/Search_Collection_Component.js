@@ -57,8 +57,8 @@ const SearchBar= () => {
       <div className="flexbox">
         < Deck_Area id="deck-2" className="deck" draggable='true'>
           {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
-            <div key={idx}>
-              <Card id={`$card-${idx}`} className="card" draggable='true' >
+            <div key={el.api_id}>
+              <Card className="card" id={`$card-${el.api_id}`}  draggable='true' value={el.id}>
                 <SearchedCard api_id={el.api_id} />
               </Card>
             </div>

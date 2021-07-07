@@ -15,7 +15,7 @@ const GamePage = () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const [point, setPoints] = useState(false)
+  const [point, setPoints] = useState(0)
 
   const user = useSelector((state) => state.session.user);
 
@@ -40,13 +40,16 @@ const GamePage = () => {
   history.push("/");
   }
 
-  window.addEventListener('click', () => {
+  window.addEventListener('keyup', () => {
     let points = 0;
     setInterval(() => {
         points+=1
       }, 1000);
-      setPoints(!point)
+      setPoints(points)
+      console.log(point)
   });
+
+ setTimeout(() => {},3000)
 
   return (
     <div>
@@ -54,8 +57,8 @@ const GamePage = () => {
           <h1>THIS IS YU-GI-OH!</h1>
           <h2>Please wait while Game Loads</h2>
           <h3>Press Spacebar to Begin!</h3>
-          <div id="DinoGame"><ChromeDinoGame /></div>
       </div>
+      <div id="DinoGame"><ChromeDinoGame /></div>
       <div className="CardFlipperPage_OptionsBar">
         <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
         <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>

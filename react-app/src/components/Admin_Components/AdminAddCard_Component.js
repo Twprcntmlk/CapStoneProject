@@ -17,24 +17,7 @@ const AdminAddCard = () => {
   const [api_set_rarity, setApi_set_rarity] = useState("");
   const [api_set_price, setApi_set_price] = useState("");
 
-  //Need to Break this down, I am getting the whole API right now
-  // const YGOAPIFetch = async () => {
-  //   const api = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-  //   const response = await fetch(api);
-  //   const jsonData = await response.json();
-  //   setYgodata(jsonData);
-  // };
 
-//   useEffect(() =>{
-//     dispatch(getAllUsers)
-//     // YGOAPIFetch()
-//   },[dispatch]);
-// api_id=api_id,
-// api_name= api_name,
-// api_set_name = api_set_name,
-// api_set_code = api_set_code,
-// api_set_rarity= api_set_rarity,
-// api_set_price = api_set_price)
   const updateId = (e) => {
     setApi_id(e.target.value);
   }

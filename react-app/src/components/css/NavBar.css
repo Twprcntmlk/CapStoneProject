@@ -16,3 +16,8 @@
 .Navbar_Holder{
     background-color:#19181f;
 }
+
+.Navbar_Container--right{
+    display:flex;
+    flex-direction: row;
+}

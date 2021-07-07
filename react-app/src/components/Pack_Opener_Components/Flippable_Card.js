@@ -20,12 +20,11 @@ const Flippable_Card = ({id}) => {
     // console.log(randomCard)
 
     const YGOAPIFetch = async () => {
-        if(id){
-        const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${id.api_id}`
+        const api = `/api/external/searchcard/${id.api_id}`
         const response = await fetch(api);
         const jsonData = await response.json();
         setApicardinfo(jsonData.data);
-        }
+
     };
 
     useEffect(() =>{

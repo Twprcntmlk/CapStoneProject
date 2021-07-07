@@ -18,8 +18,10 @@ const DeckBuilder = () => {
     history.push("/pack-opener");
   }
 
-  const toDeckBuilder = () => {
-    history.push("/collection");
+  const toAddDeck = () => {
+    const deck = []
+    const decklist = document.querySelectorAll('#deck-1 .card')
+
   }
 
   const toGame = () => {
@@ -39,15 +41,26 @@ const DeckBuilder = () => {
   //   const jsonData = await response.json();
   //   setYgodata(jsonData);
   // };
+  window.addEventListener('keyup', () => {
+  console.log(document.querySelectorAll('#deck-1 .card'))
+  const e = document.querySelectorAll('#deck-1 .card')
+  for (let i in e.NodeList){
+    console.log(i.split("#"))
+  }
+  })
 
 
   return (
-    <div>
-      <div className="DeckbuilderrPage_OptionsBar">
+    <div className="DeckbuilderPage">
+      <div className="DeckbuilderPage_OptionsBar">
+      <button className="DeckbuilderPage_button button" onClick={toAddDeck} >Add Deck</button>
           <button className="DeckbuilderPage_button button" onClick={toPackList} >Buy Another Pack</button>
-          <button className="DeckbuilderPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
           <button className="DeckbuilderPage_button button" onClick={toGame} >Play a Game</button>
           <button className="DeckbuilderPage_button button" onClick={toMain} >Back to Main</button>
+
+      </div>
+      <div className="DeckbuilderPage_title">
+        <h1>Deck Builder</h1>
       </div>
       <div className="flexbox">
           <Deck_Area id="deck-1" className="deck" draggable='true'>

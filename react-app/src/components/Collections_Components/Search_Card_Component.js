@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams,Redirect,useHistory   } from 'react-router-dom';
-import {getCards} from "../../store/cards"
+// import {getApiCardInfo} from "../../store/externalapi"
 import {addCollection} from "../../store/collections"
 import CardBack from "../images/back_high.jpg"
 import "../css/SearchedCardContainer.css"
@@ -18,14 +18,13 @@ const SearchedCard = ({api_id}) => {
     // let randomCard = id[random]
     // console.log(randomCard)
 
+
     const YGOAPIFetch = async () => {
-        if(api_id){
-        const api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${api_id}`
+        const api = `/api/external/searchcard/${api_id}`
         const response = await fetch(api);
         const jsonData = await response.json();
         const objectdata = jsonData.data
         setApicardinfo(objectdata[0]);
-        }
     };
 
     useEffect(() =>{
@@ -47,9 +46,7 @@ console.log(apicardinfo?.card_images[0].image_url)
   return (
     <div className="SearchedCardContainer" >
         <div className="SearchedCardContainer_CardDiv" >
-
-                <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} draggable="false" />
-
+            <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} draggable="false" />
         </div>
     </div>
 // : "Skull Servant"

@@ -22,17 +22,8 @@ const AdminSearchBar= () => {
 
   useEffect(() =>{
     dispatch(getCards())
-    // YGOAPIFetch()
+
   },[]);
-
-  //Need to Break this down, I am getting the whole API right now
-  // const YGOAPIFetch = async () => {
-  //   const api = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-  //   const response = await fetch(api);
-  //   const jsonData = await response.json();
-  //   setYgodata(jsonData);
-  // };
-
 
   const updateCardname = (e) => {
     setCardname(e.target.value);

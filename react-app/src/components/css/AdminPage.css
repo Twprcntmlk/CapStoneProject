@@ -1,0 +1,19 @@
+.AdminPageContainer_Page{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AdminPageContainer{
+    display:flex;
+    justify-content: space-between;
+    margin: 0px 30% 0px 30%;
+}
+
+.AdminContainer_AddCard{
+    padding-right:15%;
+}
+
+.AdminContainer_SearchBar{
+    padding-left:25%;
+}

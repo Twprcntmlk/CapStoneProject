@@ -22,8 +22,10 @@ const NavBar = () => {
         <div>
           <h1 className="title">Yu-Gi-Oh! Gacha Game!</h1>
         </div>
-        <div><LogoutButton /></div>
-        <button className="button" onClick={toAdminPage}>Admin</button>
+        <div className="Navbar_Container--right">
+          <div><LogoutButton /></div>
+          <button className="button" onClick={toAdminPage}>Admin</button>
+        </div>
     </div>
    </div>
 

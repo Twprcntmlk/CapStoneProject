@@ -16,3 +16,19 @@
     height: 200px;
 
 }
+
+.DeckbuilderPage_OptionsBar{
+    margin-top: 2%;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.DeckbuilderPage_title{
+    display:flex;
+    justify-content: center;
+}
+
+.DeckbuilderPage_button{
+
+
+}

@@ -21,9 +21,9 @@ def add_user_collection():
 
     # userCollectionCount  = db.session.query(User).join(collections).filter(collections.user_id==userId, collections.card_id == res['card_id']).count()
     userCollectionCount = User.query.join(collections).join(Card).filter((collections.c.user_id == userId) & (collections.c.card_id == res['card_id'])).count()
-
-    if(userCollectionCount == 3):
-        return {"Did Not Add to Collection, Already 3 in Deck"}
+    if(userCollectionCount == 1):
+        print("Did Not Add to Collection, Already in Deck")
+        return {"errors": "Did Not Add to Collection, Already 3 in Deck"}
     else:
         addCollection = collections.insert().values(user_id= userId, card_id= res['card_id'])
         db.session.execute(addCollection)
