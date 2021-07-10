@@ -16,7 +16,7 @@ const GamePage = () => {
   let history = useHistory();
 
   const [point, setPoints] = useState(0)
-
+  let [message, setMessage]=useState("Please wait while Game Loads");
   const user = useSelector((state) => state.session.user);
 
   //Need to Break this down, I am getting the whole API right now
@@ -31,6 +31,9 @@ const GamePage = () => {
 //     dispatch(getAllUsers)
 //     // YGOAPIFetch()
 //   },[dispatch]);
+
+setTimeout(() =>{setMessage("Enjoy The Game!")},1000)
+
 
   const toDeckBuilder = () => {
     history.push("/collection");
@@ -52,18 +55,22 @@ const GamePage = () => {
 //  setTimeout(() => {},3000)
 
   return (
-    <div className="GamePage">
-      <div className="GamePageContainer">
-          <h1>THIS IS YU-GI-OH!</h1>
-          <h2>Please wait while Game Loads</h2>
-          <h3>Press Spacebar to Begin!</h3>
+    <div>
+      <div className="GamePage">
+        <div className="GamePageContainer">
+            <h1>Please Enjoy This Temporary Game</h1>
+            <h1>While We Work On The Full Game!</h1>
+            <h2>{message}</h2>
+            <h3>Press Spacebar to Begin!</h3>
+        </div>
+        <div id="DinoGame"><div><ChromeDinoGame /></div> </div>
+        <div className="CardFlipperPage_OptionsBar">
+          <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
+          <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
+        </div>
       </div>
-      <div id="DinoGame"><ChromeDinoGame /></div>
-      <div className="CardFlipperPage_OptionsBar">
-        <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
-        <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
+
     </div>
-   </div>
 
   );
 }

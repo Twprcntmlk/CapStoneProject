@@ -1,6 +1,7 @@
 .Main_Deck{
     display:flex;
     flex-direction:column;
+    
 }
 
 #Main_Deck_Slot{

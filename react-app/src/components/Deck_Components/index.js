@@ -9,6 +9,7 @@ import { getDecks } from "../../store/decks";
 import {deleteDeck} from "../../store/decks";
 import DeckCardPage from "./Deck_Card_Components"
 import "../css/DeckCardPage.css"
+import logo from "../images/YGOPRO-2-Logo.png"
 
 const DeckPage = () => {
     const [reload, setReload] = useState(false)
@@ -57,8 +58,11 @@ const DeckPage = () => {
     },[reload]);
 
   return (
-    <div>
-        <h1> Main Deck Page</h1>
+    <div className="DeckPage">
+        <div className="DeckPage_title">
+          <img className="DeckPage_logo" src={logo}></img>
+          <h1>YuGiOh Deck-Tool</h1>
+        </div>
         <div className="DeckPageContainer">
             {Array?.map((el)=> (<div><DeckCardPage id={el}/></div>))}
 

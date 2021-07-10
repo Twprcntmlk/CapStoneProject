@@ -2,7 +2,11 @@
     display: grid;
     grid-template-columns: 65% 5% 30%;
     grid-template-rows: 100%;
-
+    background-image: url('../images/Background.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-position: fixed top;
+    color:white;
 }
 
 .CollectionPageContainer_DeckBuilder{

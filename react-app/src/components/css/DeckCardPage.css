@@ -1,6 +1,27 @@
+.DeckPage {
+  background-image: url(../images/Background.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-position: fixed top;
 
+}
+
+.DeckPage_title {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DeckPage h1{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size:5em;
+  padding-bottom: 3%;
+}
 .CardOpenerPage_CardDiv{
-    margin: 10px 30px 60px 30px ;
+    margin: 10px 10px 10px 10px ;
 }
 
 .CardOpenerPage_Card{
@@ -15,4 +36,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding: 0% 5% 5% 5%;
+}
+
+.DeckPage_logo{
+  width: 55%;
 }

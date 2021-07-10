@@ -1,8 +1,15 @@
+.CardFlipperPage{
+    background-image: url('../images/Background.jpg');
+    background-position: center;
+    height: 100vh;
+}
+
 .CardFlipperPage_Header {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 1.6em;
+    color:white;
 }
 
 .CardFlipperPage_Body {
@@ -21,5 +28,5 @@
 }
 
 .CardFlipperPage_button{
-    margin: 0% 5% 5% 5%
+    margin: 5% 5% 5% 5%
 }

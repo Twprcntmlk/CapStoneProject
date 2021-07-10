@@ -4,14 +4,18 @@
     justify-content:center;
     align-items:center;
     font-size: 1.6em;
-    background-image: url('../images/GodzillaSingular.jpg');
+    background-image: url('../images/Background.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-position: fixed top;
 }
 
 .PackListPage_Title{
     display:flex;
     flex-direction: column;
     align-items:center;
-    background:#b2591a;
+    color:white;
+    font-size: 1.5em;
     margin-top: 2%;
 }
 .PackListPage_Container{
@@ -35,7 +39,6 @@
     margin-bottom: 1%;
     margin-top: 2%;
     align-items:center;
-    background:#b2591a;
     margin-left: 3%;
 }
 .PackListPage_Card a{

@@ -1,6 +1,11 @@
 .CardInfoPage{
     display:flex;
     flex-direction:column;
+    background-image: url('../images/Background.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-position: fixed top;
+    color:white;
 }
 
 .CardInfoPage_Info{

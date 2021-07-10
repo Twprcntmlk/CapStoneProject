@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .MainPage_Main_Game--title h1{
@@ -30,10 +31,11 @@
     border-top: 1px solid;
     padding-top: 2%;
     margin-bottom: 10px;
+
 }
 
 .MainPage_Main_Collection{
-    margin: 30px 1% 30px 1% ;
+    margin: 30px 2% 26px 2% ;
 }
 
 .MainPage_Main_Collection--title{
@@ -41,6 +43,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
+
 }
 
 .MainPage_Main_Collection--title h1{
@@ -53,6 +57,7 @@
     margin-bottom: 10px;
 }
 
+
 .MainPage_Main_PackOpener{
     margin: 30px 5% 30px 2% ;
 
@@ -62,6 +67,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .MainPage_Main_PackOpener--title span{
@@ -84,13 +90,13 @@
 .MainPage_Splash{
     overflow: hidden;
     margin: 10px 0px 10px 0px;
-    height: 430px
+    height: 470px;
 }
 
 .slidingBackground{
     background: url("../images/Banner.png") repeat-x;
     animation: slide 90s linear infinite;
-    height: 100%;
+    height: 470px;
 }
 
 

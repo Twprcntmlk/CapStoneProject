@@ -10,10 +10,16 @@
     flex-direction: column;
     align-items: center;
     font-size: 1.5em;
+    margin-top: 2%;
+
 }
 
 .GamePage{
     display:flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('../images/Background.jpg');
+    background-position: center;
+    height: 100vh;
+    color:white;
 }
