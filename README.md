@@ -95,6 +95,8 @@ This is the backend for the Flask React project.
    heroku run -a capstone-ygo-gacha-project flask db upgrade
    heroku run -a capstone-ygo-gacha-project flask seed all
 
+heroku run -a capstone-ygo-gacha-project flask db downgrade
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit...
+ heroku run -a capstone-ygo-gacha-project flask db migrate

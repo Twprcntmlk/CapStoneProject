@@ -60,7 +60,7 @@ const DeckPage = () => {
     <div>
         <h1> Main Deck Page</h1>
         <div className="DeckPageContainer">
-            {Array?.map((el)=> (<div><DeckCardPage id={el}/> {el}</div>))}
+            {Array?.map((el)=> (<div><DeckCardPage id={el}/></div>))}
 
 
         </div>
