@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 #these are the file name in seeds
 from .users import seed_users, undo_users
 from .comments import seed_comments, undo_comments
-# from .decks import seed_decks, undo_decks
+from .decks import seed_decks, undo_decks
 from .cards import seed_cards, undo_cards
 # from .collections import seed_collections, undo_collections
 
@@ -18,7 +18,7 @@ def seed():
     seed_users()
     seed_cards()
     # seed_collections()
-    # seed_decks()
+    seed_decks()
     seed_comments()
 
 
@@ -30,7 +30,7 @@ def undo():
     undo_users()
     undo_cards()
     # undo_collections()
-    # undo_decks()
+    undo_decks()
     undo_comments()
 
 

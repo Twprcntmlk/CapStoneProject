@@ -30,6 +30,7 @@ const CardFlipperPage = () => {
 
     const toDeckBuilder = () => {
       history.push("/collection");
+      window.location.reload()
     }
 
     const toGame = () => {

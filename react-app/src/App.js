@@ -14,6 +14,7 @@ import GamePage from "./components/Game_Components/GamePage";
 import CollectionPage from "./components/Collections_Components/index";
 import CardPage from "./components/Card_Components/index";
 import AdminPage from "./components/Admin_Components/index";
+import DeckPage from "./components/Deck_Components/index";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <ProtectedRoute path="/admin" exact={true}>
           <AdminPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/deck" exact={true}>
+          <DeckPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

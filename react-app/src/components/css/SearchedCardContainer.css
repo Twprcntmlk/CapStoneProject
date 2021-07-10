@@ -8,6 +8,8 @@
     flex-direction: column;
     align-items: flex-start;
     margin-left: 15px;
+    margin-bottom: 25px;
+
 }
 .Searchbar_Container label{
     font-size:50px;
@@ -16,4 +18,15 @@
 .Searchbar_Container input{
     font-size:25px;
     width: 97%;
+}
+
+#deck-1{
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+
+#deck-2{
+    overflow:scroll;
+    overflow-x:hidden;
 }

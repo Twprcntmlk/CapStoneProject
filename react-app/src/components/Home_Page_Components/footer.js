@@ -17,7 +17,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <a href="https://github.com/f-q-a/discord-clone" className='footerRight'>
+            <a href="https://github.com/Twprcntmlk/CapStoneProject" className='footerRight'>
                 <h1>Project Repo</h1>
                 <i className="fab fa-github fa-2x" />
             </a>

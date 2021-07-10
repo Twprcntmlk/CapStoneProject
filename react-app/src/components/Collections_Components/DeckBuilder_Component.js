@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useReducer, useCallback  } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import { editDeck } from "../../store/decks"
 import "../Collections_Components/DeckBuilder_Component";
 import "../css/DeckBuilder.css";
 import "../css/Deck_Area.css";
@@ -13,15 +14,28 @@ import Card from "./Card";
 
 const DeckBuilder = () => {
   let history = useHistory();
+  let dispatch = useDispatch();
+
 
   const toPackList = () => {
     history.push("/pack-opener");
   }
 
   const toAddDeck = () => {
-    const deck = []
-    const decklist = document.querySelectorAll('#deck-1 .card')
+    let str=''
+    let nodeList = Array.from(document.querySelectorAll('#deck-1 .card'))
+    let deck = nodeList.map((node) => node.id.slice(6))//(regex.exec(node.id))
+    for (let i in deck) {
+      str+=deck[i]+" "
+    }
+    console.log(str)
 
+    dispatch(editDeck(str.slice(0,str.length-1)))
+
+  }
+
+  const toDeck = () => {
+    history.push("/deck");
   }
 
   const toGame = () => {
@@ -41,22 +55,17 @@ const DeckBuilder = () => {
   //   const jsonData = await response.json();
   //   setYgodata(jsonData);
   // };
-  window.addEventListener('keyup', () => {
-  console.log(document.querySelectorAll('#deck-1 .card'))
-  const e = document.querySelectorAll('#deck-1 .card')
-  for (let i in e.NodeList){
-    console.log(i.split("#"))
-  }
-  })
 
 
   return (
     <div className="DeckbuilderPage">
       <div className="DeckbuilderPage_OptionsBar">
-      <button className="DeckbuilderPage_button button" onClick={toAddDeck} >Add Deck</button>
-          <button className="DeckbuilderPage_button button" onClick={toPackList} >Buy Another Pack</button>
-          <button className="DeckbuilderPage_button button" onClick={toGame} >Play a Game</button>
-          <button className="DeckbuilderPage_button button" onClick={toMain} >Back to Main</button>
+        <button className="DeckbuilderPage_button button" onClick={toAddDeck} >Add Deck</button>
+        <button className="DeckbuilderPage_button button" onClick={toDeck} >See Your Deck</button>
+        <button className="DeckbuilderPage_button button" onClick={toPackList} >Buy Another Pack</button>
+        <button className="DeckbuilderPage_button button" onClick={toGame} >Play a Game</button>
+        <button className="DeckbuilderPage_button button" onClick={toMain} >Back to Main</button>
+
 
       </div>
       <div className="DeckbuilderPage_title">

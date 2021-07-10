@@ -24,6 +24,7 @@ const SearchedCard = ({api_id}) => {
         const response = await fetch(api);
         const jsonData = await response.json();
         const objectdata = jsonData.data
+        console.log(objectdata)
         setApicardinfo(objectdata[0]);
     };
 

@@ -1,5 +1,8 @@
 #DinoGame{
     margin: 5%;
+    border: 1px solid;
+    width:50%;
+
 }
 
 .GamePageContainer{
@@ -7,4 +10,10 @@
     flex-direction: column;
     align-items: center;
     font-size: 1.5em;
+}
+
+.GamePage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -2,7 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .collection import collections
-from .deck import decks
+from .deck import Deck
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -17,15 +17,15 @@ class User(db.Model, UserMixin):
     coin_balance = db.Column(db.Integer, nullable=False)
 
     # collections = db.relationship('Collection', back_populates='users')
-    # decks = db.relationship('Deck', back_populates='users')
-    decks_cards = db.relationship('Card', secondary=decks, back_populates='decks_users',cascade="all,delete")
+    decks = db.relationship('Deck', cascade="all,delete", back_populates='users')
+    # decks_cards = db.relationship('Card', secondary=decks, back_populates='decks_users',cascade="all,delete")
     collections_cards= db.relationship('Card', secondary=collections,  back_populates='collections_users',cascade="all,delete")
     comments = db.relationship('Comment', back_populates='users',cascade="all,delete")
 
     def to_dict(self):
 
         user_collection = [collection.to_dict() for collection in self.collections_cards  ]
-        user_decks = [deck.to_dict() for deck in self.decks_cards ]
+        user_decks = [deck.to_dict() for deck in self.decks if deck.user_id == self.id]
         user_comments = [comment.to_dict() for comment in self.comments ]
 
         return {
@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
             "profile_image": self.profile_image,
             "coin_balance" : self.coin_balance,
             "user_comments": user_comments,
-            "user_decks":  user_decks,
+            "user_decks": user_decks,
             "user_collection": user_collection,
         }
 

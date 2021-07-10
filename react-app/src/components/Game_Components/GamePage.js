@@ -40,19 +40,19 @@ const GamePage = () => {
   history.push("/");
   }
 
-  window.addEventListener('keyup', () => {
-    let points = 0;
-    setInterval(() => {
-        points+=1
-      }, 1000);
-      setPoints(points)
-      console.log(point)
-  });
+//   window.addEventListener('keyup', () => {
+//     let points = 0;
+//     setInterval(() => {
+//         points+=1
+//       }, 1000);
+//       setPoints(points)
+//       console.log(point)
+//   });
 
- setTimeout(() => {},3000)
+//  setTimeout(() => {},3000)
 
   return (
-    <div>
+    <div className="GamePage">
       <div className="GamePageContainer">
           <h1>THIS IS YU-GI-OH!</h1>
           <h2>Please wait while Game Loads</h2>

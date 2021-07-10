@@ -16,7 +16,7 @@ const AdminSearchBar= () => {
   const [cardname, setCardname] = useState("");
   const [usercollection, setUsercollection] = useState()
   const [usercollectionfiltered, setUsercollectionfiltered] = useState()
-
+  const [searchchange, setSearchchange] = useState(false)
   const allCardsState = useSelector((state) => state.card.cards);
   const cardValues = Object.values(allCardsState)
 
@@ -32,6 +32,13 @@ const AdminSearchBar= () => {
     setUsercollectionfiltered(filteredSearch)
   }
 
+  useEffect(() =>{
+    const filteredSearch = cardValues.filter((el)=>el.api_name.toLowerCase().includes(cardname.toLowerCase()))
+    setUsercollectionfiltered(filteredSearch)
+
+  },[searchchange]);
+
+
   const onDeleteCard= async (e) => {
     e.preventDefault();
     console.log(e.target.value)
@@ -39,7 +46,10 @@ const AdminSearchBar= () => {
     if (data) {
         window.alert("Deleted")
     }
+    setSearchchange(!searchchange)
   }
+
+
 
   return (
     <div className="SearchHolder">
@@ -59,7 +69,7 @@ const AdminSearchBar= () => {
         {usercollectionfiltered && usercollectionfiltered.map((el, idx) =>(
           <div key={idx}>
             <div>{el.api_name}</div>
-            <CardEditFormModal cardId = {el.id}/>
+            <CardEditFormModal cardId = {el.id} setSearchchange={setSearchchange}/>
             <button value={el.id}onClick={onDeleteCard}>Delete</button>
           </div>))}
 

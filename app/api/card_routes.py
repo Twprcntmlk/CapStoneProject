@@ -76,6 +76,7 @@ def delete_card (card_id):
     #first see if the card is already in the collection and see if there are less than 3
     specficCard = db.session.query(Card).get(card_id)
     # if I return a card I'm going to send to thunk to resend back to my PUT route
+    print("WHAT AM I GETTING HERE_____________________", { 'cards': specficCard})
     db.session.delete(specficCard)
     db.session.commit()
     return { 'cards': specficCard.to_dict()}

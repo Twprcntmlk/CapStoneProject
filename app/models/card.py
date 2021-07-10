@@ -1,6 +1,6 @@
 from .db import db
 from .collection import collections
-from .deck import decks
+from .deck import Deck
 
 class Card(db.Model):
     __tablename__='cards'
@@ -13,9 +13,8 @@ class Card(db.Model):
     api_set_rarity = db.Column(db.String)
     api_set_price = db.Column(db.String)
 
-    decks_users = db.relationship('User', secondary=decks, back_populates='decks_cards')
     collections_users= db.relationship('User', secondary=collections, back_populates='collections_cards')
-    comments = db.relationship('Comment', back_populates='cards')
+    comments = db.relationship('Comment', cascade="all,delete", back_populates='cards')
 
     def to_dict(self):
 

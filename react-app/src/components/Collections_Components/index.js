@@ -6,37 +6,25 @@ import SearchBar from "./Search_Collection_Component"
 import DeckBuilder from "./DeckBuilder_Component";
 import "../css/CollectionPageContainer.css"
 import {getCollection} from "../../store/collections";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import {getDecks} from "../../store/decks";
 
 const CollectionPage = () => {
   const dispatch = useDispatch();
-  let history = useHistory();
 
-  const allCardsState = useSelector((state) => state.session.user);
-  const cardValues = Object.values(allCardsState)
+  // const allCardsState = useSelector((state) => state.deck.decks);
+  // const cardValues = Object.values(allCardsState)
+  // console.log(cardValues)
 
   useEffect(() =>{
     dispatch(getCollection)
-    // YGOAPIFetch()
-  },[]);
-
-
-  //Need to Break this down, I am getting the whole API right now
-  // const YGOAPIFetch = async () => {
-  //   const api = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-  //   const response = await fetch(api);
-  //   const jsonData = await response.json();
-  //   setYgodata(jsonData);
-  // };
-
+    // dispatch(getDecks)
+  },[dispatch]);
 
   return (
     <div className="CollectionPageContainer">
-
-            <div className="CollectionPageContainer_SearchBar"><SearchBar/></div>
-            <div className="CollectionPageContainer_Divider"> </div>
-            <div className="CollectionPageContainer_DeckBuilder"><DeckBuilder/></div>
-
+      <div className="CollectionPageContainer_SearchBar"><SearchBar/></div>
+      <div className="CollectionPageContainer_Divider"> </div>
+      <div className="CollectionPageContainer_DeckBuilder"><DeckBuilder/></div>
     </div>
   );
 }

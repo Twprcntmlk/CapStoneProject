@@ -28,6 +28,7 @@
 
 .MainPage_Main_Game--title span{
     border-top: 1px solid;
+    padding-top: 2%;
     margin-bottom: 10px;
 }
 
@@ -47,6 +48,7 @@
 }
 
 .MainPage_Main_Collection--title span{
+    padding-top: 2%;
     border-top: 1px solid;
     margin-bottom: 10px;
 }
@@ -63,6 +65,7 @@
 }
 
 .MainPage_Main_PackOpener--title span{
+    padding-top: 2%;
     border-top: 1px solid;
     margin-bottom: 10px;
 }

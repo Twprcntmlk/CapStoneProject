@@ -1,3 +1,5 @@
+import getAllUsers from "./session"
+
 const GET_COLLECTION = "channel/GET_COLLECTION";
 const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 // const EDIT_COLLECTION = "channel/EDIT_COLLECTION";
@@ -44,7 +46,8 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
     }
     else {
-      dispatch(addCollectionAction(data.collections));
+      dispatch(getAllUsers())
+      // dispatch(addCollectionAction(data.collections));
     }
   }
 

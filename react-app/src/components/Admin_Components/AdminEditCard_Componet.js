@@ -6,7 +6,7 @@ import "../Collections_Components/DeckBuilder_Component"
 import "../css/DeckBuilder.css";
 import {editCard} from "../../store/cards";
 
-const AdminEditCard = ({cardId}) => {
+const AdminEditCard = ({cardId, setSearchchange, setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -47,7 +47,11 @@ const AdminEditCard = ({cardId}) => {
     if (data) {
         window.alert("Edited")
     }
+    setSearchchange(prev=> !prev)
+    setShowModal(prev=> !prev)
   }
+
+
 
   return (
     <div>

@@ -76,6 +76,7 @@ const EDIT_CARD = "card/EDIT_CARD";
     const response = await fetch(`/api/cards/${cardId}`, {
       method: "DELETE"
     });
+    console.log(cardId)
     if (response.ok) {
       dispatch(deleteCardAction(cardId))
     }
