@@ -1,0 +1,18 @@
+
+.CardOpenerPage_CardDiv{
+    margin: 10px 30px 60px 30px ;
+}
+
+.CardOpenerPage_Card{
+    width: 177px;
+    height: 254px;
+}
+
+.DeckPageContainer{
+  font-size:1.2em;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

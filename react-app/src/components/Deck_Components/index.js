@@ -8,6 +8,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { getDecks } from "../../store/decks";
 import {deleteDeck} from "../../store/decks";
 import DeckCardPage from "./Deck_Card_Components"
+import "../css/DeckCardPage.css"
 
 const DeckPage = () => {
     const [reload, setReload] = useState(false)
@@ -57,9 +58,7 @@ const DeckPage = () => {
 
   return (
     <div>
-        <div>
-            <button onClick={onDeleteDeck}>Delete Deck</button>
-        </div>
+        <h1> Main Deck Page</h1>
         <div className="DeckPageContainer">
             {Array?.map((el)=> (<div><DeckCardPage id={el}/> {el}</div>))}
 
@@ -70,6 +69,7 @@ const DeckPage = () => {
             <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
             <button className="CardFlipperPage_button button" onClick={toGame} >Play a Game</button>
             <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
+            <button className="CardFlipperPage_button button" onClick={onDeleteDeck}>Delete Deck</button>
         </div>
     </div>
   );

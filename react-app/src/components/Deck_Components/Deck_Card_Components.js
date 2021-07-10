@@ -4,7 +4,7 @@ import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
 
 import LevelStar from "../images/levelstar.png"
-import "../css/CardPage.css"
+import "../css/DeckCardPage.css"
 
 
 const DeckCardPage = ({id}) => {
@@ -35,11 +35,8 @@ const DeckCardPage = ({id}) => {
 
 
    return (
-    <div className="CardInfoPage">
-
-        <img src={apicardinfo && apicardinfo?.card_images[0].image_url}/>
-
-
+    <div className ="CardOpenerPage_CardDiv" >
+        <img className="CardOpenerPage_Card" src={apicardinfo && apicardinfo?.card_images[0].image_url}/>
     </div>
 
 // : "Skull Servant"

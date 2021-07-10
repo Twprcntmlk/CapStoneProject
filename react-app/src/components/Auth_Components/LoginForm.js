@@ -3,7 +3,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { Redirect, useHistory  } from "react-router-dom";
 import { login } from "../../store/session";
 
-const LoginForm = () => {
+const LoginForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user)
@@ -17,7 +17,7 @@ const LoginForm = () => {
     if (data.errors) {
       setErrors(data.errors);
     }
-
+    setShowModal(prev=> !prev)
   };
 
   const updateEmail = (e) => {
@@ -39,7 +39,7 @@ const LoginForm = () => {
     if (data.errors) {
       setErrors(data.errors);
     }
-
+    setShowModal(prev=> !prev)
   };
 
   return (

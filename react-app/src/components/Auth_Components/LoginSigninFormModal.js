@@ -24,14 +24,14 @@ function LoginFormModal() {
         <Modal onClose={() => setShowModal(false)}>
           {formState ?
           <div>
-            
-            <LoginForm />
+
+            <LoginForm setShowModal={setShowModal}/>
             <a className="ButtonLink" onClick={toSignUp}>Need to Sign Up?</a>
           </div>
           :
           <div>
             <h3 className="ButtonLink" >Sign Up</h3>
-            <SignUpForm />
+            <SignUpForm setShowModal={setShowModal}/>
             <a className="ButtonLink"onClick={toLogin}>Already Have An Account?</a>
           </div>}
         </Modal>

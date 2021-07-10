@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
-const SignUpForm = () => {
+const SignUpForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const [username, setUsername] = useState("");
@@ -16,6 +16,7 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
     }
+    setShowModal(prev=> !prev)
   };
 
   const updateUsername = (e) => {
