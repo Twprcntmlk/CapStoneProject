@@ -32,7 +32,7 @@ const GamePage = () => {
 //     // YGOAPIFetch()
 //   },[dispatch]);
 
-setTimeout(() =>{setMessage("Enjoy The Game!")},1000)
+setTimeout(() =>{setMessage("Enjoy The Game!")},5000)
 
 
   const toDeckBuilder = () => {

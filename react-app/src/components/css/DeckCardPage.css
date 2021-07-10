@@ -1,6 +1,6 @@
 .DeckPage {
   background-image: url(../images/Background.jpg);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center top;
   background-position: fixed top;
 
@@ -20,11 +20,11 @@
   font-size:5em;
   padding-bottom: 3%;
 }
-.CardOpenerPage_CardDiv{
+.DeckOpenerPage_CardDiv{
     margin: 10px 10px 10px 10px ;
 }
 
-.CardOpenerPage_Card{
+.DeckOpenerPage_Card{
     width: 177px;
     height: 254px;
 }

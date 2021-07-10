@@ -35,6 +35,7 @@ const DeckBuilder = () => {
   }
 
   const toDeck = () => {
+    // return <Redirect to="/deck" />;
     history.push("/deck");
   }
 

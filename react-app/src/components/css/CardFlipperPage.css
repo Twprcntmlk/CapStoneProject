@@ -1,7 +1,11 @@
 .CardFlipperPage{
     background-image: url('../images/Background.jpg');
     background-position: center;
-    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-position: fixed top;
+   
+
 }
 
 .CardFlipperPage_Header {

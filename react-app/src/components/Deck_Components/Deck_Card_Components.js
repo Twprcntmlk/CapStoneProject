@@ -29,14 +29,13 @@ const DeckCardPage = ({id}) => {
     // useEffect
     useEffect(() =>{
       YGOAPIFetch()
-
       dispatch(getCards())
-    },[]);
+    },[id]);
 
 
    return (
-    <div className ="CardOpenerPage_CardDiv" >
-        <img className="CardOpenerPage_Card" src={apicardinfo && apicardinfo?.card_images[0].image_url}/>
+    <div className ="DeckOpenerPage_CardDiv" >
+        <img className="DeckOpenerPage_Card" src={apicardinfo && apicardinfo?.card_images[0].image_url}/>
     </div>
 
 // : "Skull Servant"
