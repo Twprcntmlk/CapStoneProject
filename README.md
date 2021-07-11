@@ -79,12 +79,13 @@ This is the backend for the Flask React project.
    ```bash
    heroku container:push web -a {NAME_OF_HEROKU_APP}
    ```
-
+heroku container:push web -a capstone-ygo-gacha-project
 8. Release your docker container to heroku
 
    ```bash
    heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
+   ``
+   heroku container:release web -a capstone-ygo-gacha-project
 
 9. set up your database:
 
