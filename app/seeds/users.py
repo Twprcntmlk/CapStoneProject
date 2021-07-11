@@ -9,12 +9,12 @@ def seed_users():
     hash_password = generate_password_hash('password')
 
     demo = User(f_name="Demo", l_name="Demo", username='Demo', email='demo@aa.io',
-                hashed_password=hash_password, profile_image="https://secure.gravatar.com/avatar/35b3964ef953ef99791b7c98078d919e?secure=true&size=300", coin_balance=1000)
+                hashed_password=hash_password, profile_image="https://secure.gravatar.com/avatar/35b3964ef953ef99791b7c98078d919e?secure=true&size=300", coin_balance=10000, admin= True)
 
     db.session.add(demo)
 
     for i in range(2, 6):
-        temp = User(f_name=faker.first_name(), l_name=faker.last_name(), username=faker.user_name(), email=faker.email(), hashed_password=hash_password, profile_image="https://secure.gravatar.com/avatar/35b3964ef953ef99791b7c98078d919e?secure=true&size=300", coin_balance=1000)
+        temp = User(f_name=faker.first_name(), l_name=faker.last_name(), username=faker.user_name(), email=faker.email(), hashed_password=hash_password, profile_image="https://secure.gravatar.com/avatar/35b3964ef953ef99791b7c98078d919e?secure=true&size=300", coin_balance=10000, admin= True)
         db.session.add(temp)
     db.session.commit()
 

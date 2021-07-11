@@ -13,7 +13,7 @@ const SearchedCard = ({api_id}) => {
     const [apicardinfo, setApicardinfo] = useState()
 
 
-    console.log("PASS",api_id)
+    // console.log("PASS",api_id)
 
     // let randomCard = id[random]
     // console.log(randomCard)
@@ -24,7 +24,7 @@ const SearchedCard = ({api_id}) => {
         const response = await fetch(api);
         const jsonData = await response.json();
         const objectdata = jsonData.data
-        console.log(objectdata)
+        // console.log(objectdata)
         setApicardinfo(objectdata[0]);
     };
 
@@ -32,7 +32,7 @@ const SearchedCard = ({api_id}) => {
         YGOAPIFetch()
     },[api_id]);
 
-    console.log("This is card info",apicardinfo);
+    // console.log("This is card info",apicardinfo);
 
     // let handleClick = () => {
     //     setFlippedstate(true);

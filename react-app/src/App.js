@@ -46,12 +46,6 @@ function App() {
         <ProtectedRoute path="/pack-opener/:code" exact={true} >
           <CardFlipperPage />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/pack-opener" exact={true} >
-          < Pack_Opener_Page />
-         <Route path="/pack-opener/:code" exact={true} >
-          <Pack_List_Opener_Page />
-
-          </ProtectedRoute>*/}
         <Route path="/game" exact={true}>
           <GamePage />
         </Route>

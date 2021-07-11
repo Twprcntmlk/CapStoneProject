@@ -13,7 +13,6 @@ import logo from "../images/YGOPRO-2-Logo.png"
 
 const DeckPage = () => {
     const [reload, setReload] = useState(false)
-    const [deckstate, setDeckstate] = useState(false)
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -25,6 +24,7 @@ const DeckPage = () => {
     const onDeleteDeck = async () => {
         const data = await dispatch(deleteDeck(userDeck?.id))
         setReload(!reload)
+        history.push("/collection");
     }
     // const [apicardinfo, setApicardinfo] = useState()
 //62279055 69832741
@@ -55,7 +55,7 @@ const DeckPage = () => {
     useEffect(() =>{
         dispatch(getDecks())
         // dispatch(YGOAPIFetch)
-    },[dispatch]);
+    },[reload]);
 
   return (
     <div className="DeckPage">

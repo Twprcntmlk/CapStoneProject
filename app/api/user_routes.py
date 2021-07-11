@@ -24,14 +24,34 @@ def edit_user():
     res = request.get_json()
     user = db.session.query(User).get(user_id)
     if(res['password'] != res['repeatPassword']):
-        return {errors:["Password Does Not Match"]}
+        return {"errors":["Password Does Not Match"]}
     else:
         user.username = res['username']
         user.email = res['email']
         user.avatar_link = res['image']
         user.hashed_password = res['password']
         db.session.commit()
-        return {user: [user.to_dict()]}
+        return {"users": [user.to_dict()]}
+
+@user_routes.route('/points', methods=['PUT'])
+def edit_user_point():
+    user_id = int(current_user.id)
+    res = request.get_json()
+    user = db.session.query(User).get(user_id)
+    user.coin_balance = user.coin_balance + int(res['points'])
+    db.session.commit()
+
+    return {"user":user.to_dict()}
+
+@user_routes.route('/buy', methods=['PUT'])
+def edit_user_buy():
+    user_id = int(current_user.id)
+    res = request.get_json()
+    user = db.session.query(User).get(user_id)
+    user.coin_balance = user.coin_balance - int(res['points'])
+    db.session.commit()
+
+    return {"user":user.to_dict()}
 
 @user_routes.route('/', methods=['DELETE'])
 def delete_user():
@@ -39,4 +59,4 @@ def delete_user():
     user= db.session.query(User).get( user_id)
     db.session.delete(user)
     db.session.commit()
-    return {user: [user.to_dict()]}
+    return {"users": [user.to_dict()]}

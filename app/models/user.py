@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_image = db.Column(db.String(255))
     coin_balance = db.Column(db.Integer, nullable=False)
+    admin = db.Column(db.Boolean, default=True, nullable=False)
 
     # collections = db.relationship('Collection', back_populates='users')
     decks = db.relationship('Deck', cascade="all,delete", back_populates='users')
@@ -37,6 +38,7 @@ class User(db.Model, UserMixin):
             "hashed_password": self.hashed_password,
             "profile_image": self.profile_image,
             "coin_balance" : self.coin_balance,
+            "admin":self.admin,
             "user_comments": user_comments,
             "user_decks": user_decks,
             "user_collection": user_collection,

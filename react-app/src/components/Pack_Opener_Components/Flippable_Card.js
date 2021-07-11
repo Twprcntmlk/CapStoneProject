@@ -14,7 +14,7 @@ const Flippable_Card = ({id}) => {
     const [cardinfo, setCardinfo] = useState()
     const [flippedstate, setFlippedstate] = useState()
 
-    console.log("PASS",id.api_id)
+    // console.log("PASS",id.api_id)
 
     // let randomCard = id[random]
     // console.log(randomCard)
@@ -40,7 +40,7 @@ const Flippable_Card = ({id}) => {
         setCardinfo(Acard[0]);
     };
 
-    console.log("This is card info",apicardinfo);
+    // console.log("This is card info",apicardinfo);
 
     let handleClick = () => {
         setFlippedstate(true);
@@ -60,8 +60,8 @@ const Flippable_Card = ({id}) => {
         </div>
         <div className="CardOpenerPage_CardDiv">
             {apicardinfo?.map((el, idx) => (
-            <div onClick={toCard}>
-                <img key={idx} className="CardOpenerPage_Card" src={el.card_images[0].image_url} />
+            <div key={idx} onClick={toCard}>
+                <img className="CardOpenerPage_Card" src={el.card_images[0].image_url} />
                 <div><b>{cardinfo?.api_set_rarity}</b></div>
                 <div><b>${cardinfo?.api_set_price}</b></div>
             </div>

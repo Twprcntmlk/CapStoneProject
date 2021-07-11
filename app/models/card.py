@@ -5,7 +5,6 @@ from .deck import Deck
 class Card(db.Model):
     __tablename__='cards'
     id = db.Column(db.Integer, primary_key=True)
-
     api_id = db.Column(db.Integer)
     api_name = db.Column(db.String)
     api_set_name = db.Column(db.String)

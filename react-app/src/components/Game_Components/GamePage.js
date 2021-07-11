@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirec, useHistory } from "react-router-dom";
+import {editUserPoints} from "../../store/users"
+import {getAllUsers} from "../../store/users"
 //store imports
 
 //component imports
@@ -15,7 +17,7 @@ const GamePage = () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const [point, setPoints] = useState(0)
+  const [point, setPoints] = useState(100)
   let [message, setMessage]=useState("Please wait while Game Loads");
   const user = useSelector((state) => state.session.user);
 
@@ -27,13 +29,13 @@ const GamePage = () => {
   //   setYgodata(jsonData);
   // };
 
-//   useEffect(() =>{
-//     dispatch(getAllUsers)
-//     // YGOAPIFetch()
-//   },[dispatch]);
+  useEffect(() =>{
+    dispatch(getAllUsers)
+    dispatch(editUserPoints(point))
+  },[setPoints]);
 
 setTimeout(() =>{setMessage("Enjoy The Game!")},5000)
-
+// setTimeout(() =>{setPoints(100)},1000)
 
   const toDeckBuilder = () => {
     history.push("/collection");

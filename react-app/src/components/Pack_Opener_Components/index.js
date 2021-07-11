@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "../css/PackOpener.css"
-const separator = <div className="separator__div"></div>
+import {editUserBuy} from "../../store/users"
+import {getAllUsers} from "../../store/users"
 
 const Pack_List_Page = () => {
 
   const dispatch = useDispatch();
+  const user_coin_balance = useSelector((state) => state.session.user.coin_balance);
+  const user_id = useSelector((state) => state.session.user.id);
+  const user = useSelector((state) => state.user.users);
+  const userObj = Object.values(user)
+  const thisuser = userObj.filter((el) => el.id === user_id )
 
   const [ygocardsets, setYgocardsets] = useState()
+  const [point, setPoints] = useState(100)
 
   //Need to Break this down, I am getting the whole API right now
   const YGOAPIFetch = async () => {
@@ -24,21 +31,27 @@ const Pack_List_Page = () => {
   // Note to self: this works but give me packs i do not want. (el.tcg_date >= "2002-03-08") && (el.tcg_date <= "2004-03-01")
   useEffect(() =>{
     YGOAPIFetch()
+    dispatch(getAllUsers())
   },[]);
 
+  const onbuyCard = async () => {
+    await dispatch(editUserBuy(point))
+  }
 
 
   return (
     <div className='PackListPage'>
+      <div id="coin_balance">Current Coin Balance:&nbsp;{thisuser[0]?.coin_balance}</div>
       <div className='PackListPage_Title'>
         <h1>Yu-Gi-Oh! Pack Opener </h1>
+
         <span>A virtual Yu-Gi-Oh! Pack Opener. Can you get a Ghost Rare? </span>
       </div>
       <div className = 'PackListPage_Container'>
         {ygocardsets?.map((el, idx) => (
         <div className="PackListPage_Card" key={idx}>
-          <a className="PackListPage_Pack" href={`/pack-opener/${el.set_name}`}>
-              <img src = {`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
+          <a className="PackListPage_Pack" onClick={onbuyCard} href={`/pack-opener/${el.set_name}` }>
+              <img src ={`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
           </a>
           <div >
               <div><b>Set Name:</b> {`${el.set_name}`}</div>

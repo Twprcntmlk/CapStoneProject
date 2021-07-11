@@ -3,25 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
 import Flippable_Card from "./Flippable_Card"
-import "../css/CardFlipperPage.css"
-const separator = <div className="separator__div"></div>
 
+import "../css/CardFlipperPage.css"
 
 const CardFlipperPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const name = useParams();
-    console.log("NAME of PARAM",name['code'])
+
+    // console.log("NAME of PARAM",name['code'])
     //////////////////////////
     useEffect(() =>{
         dispatch(getCards())
+
       },[dispatch]);
     ///////////////////////////
     const cards = useSelector((state) => state.card.cards);
     const cardsToArray = Object.values(cards)
-    console.log(cardsToArray)
+    // console.log(cardsToArray)
     const cardIds = cardsToArray?.filter((el)=> el.api_set_name === name['code'])
-    console.log(cardIds)
+    // console.log(cardIds)
     const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
 
     const toPackList = () => {

@@ -8,9 +8,9 @@ const getUserAction = (users) => ({
     payload: users
 })
 
-const editUserAction = (users) => ({
+const editUserAction = (data) => ({
     type: EDIT_USER,
-    payload: users
+    payload: data
 })
 
 const deleteUserAction = (users) => ({
@@ -24,7 +24,6 @@ export const getAllUsers = () => async (dispatch) => {
     const response = await fetch(`/api/users/`)
     if (response.ok){
         const data = await response.json();
-        console.log("getAllUsers", data.users)
         //note: should return {"users": [user.to_dict() for user in users]}
         dispatch(getUserAction(data.users))
     } else {
@@ -48,6 +47,35 @@ export const editUser = (username,email,image,password,repeatPassword) => async 
     }
 }
 
+export const editUserPoints = (points) => async (dispatch) => {
+    const response = await fetch(`/api/users/points`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ points })
+    })
+    if (response.ok){
+        const data = await response.json();
+        return dispatch(editUserAction(data.user))
+    }
+}
+
+export const editUserBuy = (points) => async (dispatch) => {
+
+    const response = await fetch(`/api/users/buy`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ points })
+    })
+    if (response.ok){
+        const data = await response.json();
+        return dispatch(editUserAction(data.user))
+    }
+}
+//[{'id': 1, 'f_name': 'Demo', 'l_name': 'Demo', 'username': 'Demo', 'email': 'demo@aa.io', 'hashed_password': 'pbkdf2:sha256:150000$wfWIKNZv$9a803c45319fbe7f7
 export const deleteUser = (username,email,image,password,repeatPassword) => async (dispatch) => {
 
     const response = await fetch(`/api/users/`, {
@@ -81,12 +109,13 @@ export default function reducer(state = initialState, action) {
         case GET_USERS:
             return { users: NormalizeUser(action.payload) }
         case EDIT_USER:
-            newState = { ...state }
-            newState.users[action.id] = action.payload
+
+            newState = { users: { ...state.users} }
+            newState.users[action.payload.id] = action.payload
             return newState
         case DELETE_USER:
-            newState = { ...state }
-            delete newState.users[action.id][action.user_id]
+            newState = { users: { ...state.users} }
+            delete newState.users[action.payload]
             return newState
 
 

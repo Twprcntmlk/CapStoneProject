@@ -57,3 +57,12 @@
     padding-top: 2%;
 
 }
+
+#coin_balance{
+    color:white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3%;
+
+}

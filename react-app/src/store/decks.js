@@ -76,20 +76,18 @@ const DELETE_DECK = "deck/DELETE_DECK"
     if (response.ok) {
       const data = await response.json()
       return dispatch(editDeckAction(data.decks))
-      
+
     }
 
   };
 
   const NormalizeDeck= (decks) => {
-    console.log(decks)
     const normDeck = {}
     decks.forEach(deck=> {normDeck[deck.id] = deck})
     return normDeck
 }
 
   const initialState = { decks: {} };
-
   export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
