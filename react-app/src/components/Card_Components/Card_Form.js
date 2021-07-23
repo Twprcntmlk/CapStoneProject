@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import {editComment} from "../../store/comments"
 import {deleteComment} from "../../store/comments"
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 function CardForm({comment_id}) {
 
