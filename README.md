@@ -102,5 +102,5 @@ heroku run -a capstone-ygo-gacha-project flask db downgrade
 11. profit...
  heroku run -a capstone-ygo-gacha-project flask db migrate
 
-// npm install --save @fortawesome/react-fontawesome
+<!-- // npm install --save @fortawesome/react-fontawesome -->
 <!-- <script src="https://kit.fontawesome.com/bd6cb4b548.js" crossorigin="anonymous"></script> -->
