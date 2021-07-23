@@ -95,7 +95,7 @@ heroku container:push web -a capstone-ygo-gacha-project
    ```
    heroku run -a capstone-ygo-gacha-project flask db upgrade
    heroku run -a capstone-ygo-gacha-project flask seed all
-
+   heroku run -a capstone-ygo-gacha-project flask seed undo
 heroku run -a capstone-ygo-gacha-project flask db downgrade
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
