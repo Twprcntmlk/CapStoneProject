@@ -2,6 +2,7 @@ import React from 'react'
 import "../css/Footer.css"
 import Stephen from "../images/stephenC.jpeg"
 
+
 export default function Footer() {
     return (
         <div className="footerContainer">

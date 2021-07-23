@@ -17,7 +17,7 @@ const CardPage = () => {
     const history = useHistory()
     const {id} = useParams();
     //api call
-    
+
     const YGOAPIFetch = async () => {
       const api = `/api/external/searchcard/${id}`
       const response = await fetch(api);
@@ -53,6 +53,8 @@ const CardPage = () => {
       dispatch(getCards())
     },[]);
 
+    const monsterType = apicardinfo?.type
+
 
    return (
     <div className="CardInfoPage">
@@ -66,13 +68,13 @@ const CardPage = () => {
         <div className="CardInfoPage_CardInfo">
           <div id="CardInfo--row1" className="cardrow">
             <h1>{apicardinfo && apicardinfo?.name}</h1>
-            <div><img id="LevelStar" src={LevelStar}></img><b styles={{fontSize: "1.5em"}}>{apicardinfo?.level}</b></div>
+            <div> {apicardinfo?.type === ("Normal Monster") || apicardinfo?.type === ("Fusion Monster") || apicardinfo?.type === ("Effect Monster") || apicardinfo?.type === ("Ritual Monster") ? <img id="LevelStar" src={LevelStar} ></img> : null} <b style={{fontSize: "20px"}}>&nbsp;{apicardinfo?.level}</b></div>
           </div>
           <div id="CardInfo--row2" className="cardrow"><div>{apicardinfo?.type} / ID: {apicardinfo?.id}</div><div>{apicardinfo?.attribute}</div></div>
           {apicardinfo?.type === ("Magic Card") || apicardinfo?.type === ("Trap Card") || apicardinfo?.type === ("Spell Card")  ? null : <div id="CardInfo--row3" className="cardrow">ATK/{apicardinfo?.atk} DEF/{apicardinfo?.def}</div>}
 
           <div id="CardInfo--row4" className="cardrow">{apicardinfo?.desc}</div>
-          <div id="CardInfo--row5" className="cardrow"> Archetype:{apicardinfo?.race}</div>
+          <div id="CardInfo--row5" className="cardrow"> Archetype: {apicardinfo?.race}</div>
         </div>
       </div>
         <div>

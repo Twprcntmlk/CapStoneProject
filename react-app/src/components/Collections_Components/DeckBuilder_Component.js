@@ -10,6 +10,7 @@ import "../css/Card.css";
 
 
 import Deck_Area from "./Deck_Area";
+
 import Card from "./Card";
 
 const DeckBuilder = () => {
@@ -24,6 +25,7 @@ const DeckBuilder = () => {
   const toAddDeck = () => {
     let str=''
     let nodeList = Array.from(document.querySelectorAll('#deck-1 .card'))
+    //useRef
     let deck = nodeList.map((node) => node.id.slice(6))//(regex.exec(node.id))
     for (let i in deck) {
       str+=deck[i]+" "

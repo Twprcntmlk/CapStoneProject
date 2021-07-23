@@ -2,7 +2,7 @@ import React from 'react';
 import "../css/Deck_Area.css";
 import "../css/Card.css";
 
-function Deck (props) {
+function Deck_Area (props) {
     const drop = (e) => {
         e.preventDefault();
         const card_id = e.dataTransfer.getData('card_id')
@@ -24,4 +24,4 @@ function Deck (props) {
     )
 }
 
-export default Deck
+export default Deck_Area

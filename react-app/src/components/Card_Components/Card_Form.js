@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import {editComment} from "../../store/comments"
 import {deleteComment} from "../../store/comments"
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 function CardForm({comment_id}) {
 
@@ -30,8 +31,8 @@ function CardForm({comment_id}) {
   // }
   }
 
-  const onCommentDelete = async (e) =>{
-    const comment_id = e.target.value
+  const onCommentDelete = async (comment_id) =>{
+    // const comment_id = e.target.value
     console.log(comment_id)
     const data = await dispatch(deleteComment(comment_id))
 
@@ -43,7 +44,11 @@ function CardForm({comment_id}) {
     <div>
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
-        <button onClick={onCommentEdit}>Edit</button>
+
+        <button onClick={()=> onCommentEdit()}>
+          <i class="fas fa-edit"></i>
+        </button>
+
         {showedit ? <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -54,8 +59,13 @@ function CardForm({comment_id}) {
           />
         </label>
         <button type="submit">Edit Comment</button>
+
       </form> : null }
-      <button value = {comment_id} onClick={onCommentDelete}>Delete</button>
+
+        <button onClick={()=> onCommentDelete(comment_id)}>
+          <i value = {comment_id} class="far fa-trash-alt"> </i>
+        </button>
+
     </div>
   );
 }
