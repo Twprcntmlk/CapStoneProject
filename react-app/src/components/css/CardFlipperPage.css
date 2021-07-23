@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: center top;
     background-position: fixed top;
-   
+
 
 }
 
@@ -21,7 +21,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content:center;
-    margin: 2% 20% 0% 20%
+    margin: 2% 19% 0% 19%
 }
 
 .CardFlipperPage_OptionsBar {
