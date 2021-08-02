@@ -28,7 +28,7 @@ const DELETE_COMMENT = "comment/DELETE_COMMENT"
 
 
   export const getComments = () => async (dispatch) => {
-    const response = await fetch(`/api/comments`);
+    const response = await fetch(`/api/comments/`);
     const data = await response.json();
     if (data.errors) return;
     dispatch(getCommentsAction(data.comments));

@@ -48,7 +48,7 @@ export const editUser = (username,email,image,password,repeatPassword) => async 
 }
 
 export const editUserPoints = (points) => async (dispatch) => {
-    const response = await fetch(`/api/users/points`, {
+    const response = await fetch(`/api/users/points/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export const editUserPoints = (points) => async (dispatch) => {
 
 export const editUserBuy = (points) => async (dispatch) => {
 
-    const response = await fetch(`/api/users/buy`, {
+    const response = await fetch(`/api/users/buy/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

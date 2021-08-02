@@ -70,7 +70,7 @@ const DELETE_DECK = "deck/DELETE_DECK"
   }
 
   export const deleteDeck = (id) => async (dispatch) => {
-    const response = await fetch(`/api/decks/delete`, {
+    const response = await fetch(`/api/decks/delete/`, {
       method: "PUT"
     });
     if (response.ok) {

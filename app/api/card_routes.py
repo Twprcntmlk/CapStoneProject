@@ -30,11 +30,11 @@ def get_deck_cards(card_id):
 def add_card ():
     userId = int(current_user.id)
     res = request.get_json()
-
+    print("AM I GETTING HERE____________________________________",res)
     #first see if the card is already in the collection and see if there are less than 3
-    specficCard =  db.session.query(db.session.query(Card).filter(Card.api_id == res['api_id']).exists()).scalar()
+    CardExists =  db.session.query(db.session.query(Card).filter(Card.api_id == res['api_id']).exists()).scalar()
     # if I return a card I'm going to send to thunk to resend back to my PUT route
-    if(specficCard) :
+    if(CardExists) :
         return { 'errors': "Card Already Exist in Database" }
     else :
         addCard = Card(
@@ -46,7 +46,8 @@ def add_card ():
         api_set_price = res['api_set_price'])
         db.session.add(addCard)
         db.session.commit()
-        return { 'cards': addCard }
+        return {'cards': addCard.to_dict() }
+
 
 @card_routes.route('/<int:card_id>', methods=['PUT'])
 def edit_card (card_id):
@@ -65,7 +66,6 @@ def edit_card (card_id):
         specficCard.api_set_price = res['api_set_price']
         db.session.add(specficCard)
         db.session.commit()
-        print("WHAT AM I GETTING HERE_____________________", { 'cards': specficCard})
         return { 'cards': specficCard.to_dict()}
     else :
         return { 'errors': "Card is NOT in Database"}

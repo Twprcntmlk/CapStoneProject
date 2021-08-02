@@ -10,7 +10,7 @@ def getting_user_collection():
     userId = int(current_user.id)
     userCollection = db.session.query(Collection).filter(Collection.user_id == userId)
     collection = [collection.to_dict() for collection in userCollection]
-    return {'collections': collection}
+    return {'collections': collection.to_dict()}
 
 
 @collection_routes.route('/', methods=['POST'])
@@ -28,6 +28,6 @@ def add_user_collection():
         addCollection = collections.insert().values(user_id= userId, card_id= res['card_id'])
         db.session.execute(addCollection)
         db.session.commit()
-        return { 'collections': addCollection}
+        return { 'collections': addCollection.to_dict()}
 
 # Users.Card.Append()

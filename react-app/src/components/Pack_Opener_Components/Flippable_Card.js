@@ -2,25 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
+import {addCard} from "../../store/cards"
 import {addCollection} from "../../store/collections"
 import CardBack from "../images/back_high.jpg"
 import "../css/FlipCard.css"
 import ReactCardFlip from 'react-card-flip';
 
-const Flippable_Card = ({id}) => {
+const Flippable_Card = ({setcardinfo}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [apicardinfo, setApicardinfo] = useState()
-    const [cardinfo, setCardinfo] = useState()
+    // const [cardinfo, setCardinfo] = useState()
     const [flippedstate, setFlippedstate] = useState()
 
-    // console.log("PASS",id.api_id)
+    console.log("THISNINERANDOMCARDINFO",setcardinfo)
 
     // let randomCard = id[random]
     // console.log(randomCard)
 
     const YGOAPIFetch = async () => {
-        const api = `/api/external/searchcard/${id.api_id}`
+        const api = `/api/external/searchcard/${setcardinfo.id}`
         const response = await fetch(api);
         const jsonData = await response.json();
         setApicardinfo(jsonData.data);
@@ -29,22 +30,31 @@ const Flippable_Card = ({id}) => {
 
     useEffect(() =>{
         YGOAPIFetch()
-        CardFetch()
+        // CardFetch()
     },[]);
 
-    const CardFetch = async () => {
-        const api = `/api/cards/${id.api_id}` //http://localhost:5000/api/cards/${id}
-        const response = await fetch(api);
-        const data = await response.json();
-        const Acard = data.cards
-        setCardinfo(Acard[0]);
-    };
+    // const CardFetch = async () => {
+    //     const api = `/api/cards/${setcardinfo.id}` //http://localhost:5000/api/cards/${id}
+    //     const response = await fetch(api);
+    //     const data = await response.json();
+    //     const Acard = data.cards
+    //     setCardinfo(Acard[0]);
+    // };
 
-    // console.log("This is card info",apicardinfo);
+    console.log("This is card info",apicardinfo);
+    // console.log("cardinfo", cardinfo)
 
-    let handleClick = () => {
+    let handleClick = async () => {
         setFlippedstate(true);
-        dispatch(addCollection(cardinfo.id));
+        let api_id = setcardinfo.id
+        let api_name = setcardinfo.name
+        let api_set_name = setcardinfo.set_name
+        let api_set_code = setcardinfo.set_code
+        let api_set_rarity = setcardinfo.set_rarity
+        let api_set_price = setcardinfo.set_price
+        let response = await dispatch(addCard(api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price))
+
+        // dispatch(addCollection(setcardinfo.id));
       }
 
     const toCard = () => {
@@ -62,8 +72,8 @@ const Flippable_Card = ({id}) => {
             {apicardinfo?.map((el, idx) => (
             <div key={idx} onClick={toCard}>
                 <img className="CardOpenerPage_Card" src={el.card_images[0].image_url} />
-                <div><b>{cardinfo?.api_set_rarity}</b></div>
-                <div><b>${cardinfo?.api_set_price}</b></div>
+                <div><b>{apicardinfo?.set_rarity}</b></div>
+                <div><b>${apicardinfo?.set_price}</b></div>
             </div>
             ))}
         </div>

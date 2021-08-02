@@ -10,8 +10,34 @@ const CardFlipperPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const name = useParams();
+    const [cardinfo, setCardinfo] = useState()
 
-    // console.log("NAME of PARAM",name['code'])
+  //   const CardsetinfoFetch = async () => {
+  //     const api = `/api/getcardsetCard/${name['code']}` //http://localhost:5000/api/cards/${id}
+  //     const response = await fetch(api);
+  //     const data = await response.json();
+  //     const Acard = data.cards
+  //     setCardinfo(Acard[0]);
+  // };
+
+
+    const GetNineRandomCardsInSetFetch = async () => {
+      const api = `/api/external/getninerandomcardsinset/${name['code']}`
+      const response = await fetch(api);
+      const data = await response.json();
+      console.log("WHAT IS THIS_____________________",data.data)
+      const Acard = data.data
+      setCardinfo(Acard);
+  };
+
+  console.log("WHAT IS THIS_____________________",cardinfo)
+
+  useEffect(() =>{
+    // CardsetinfoFetch()
+    GetNineRandomCardsInSetFetch()
+  },[]);
+
+    console.log("NAME of PARAM",name['code'])
     //////////////////////////
     useEffect(() =>{
         dispatch(getCards())
@@ -21,7 +47,7 @@ const CardFlipperPage = () => {
     const cards = useSelector((state) => state.card.cards);
     const cardsToArray = Object.values(cards)
     // console.log(cardsToArray)
-    const cardIds = cardsToArray?.filter((el)=> el.api_set_name === name['code'])
+    const cardIds = cardsToArray?.filter((el)=> el.api_set_code === name['code'])
     // console.log(cardIds)
     const cardsAPIid = useSelector((state) => Object.values((state.card.cards)).api_id);
 
@@ -42,9 +68,6 @@ const CardFlipperPage = () => {
       history.push("/");
     }
 
-    function get_random (cardIds) {
-      return cardIds[Math.floor((Math.random()*cardIds.length))];
-    }
 
 
 
@@ -57,7 +80,7 @@ const CardFlipperPage = () => {
         <h1>{name['code']}</h1>
       </div>
       <div className="CardFlipperPage_Body">
-      {cardIds.slice(0,9)?.map((el, idx) => (<div key={idx}> <Flippable_Card id={get_random(cardIds)}/> </div>  ))}
+      {cardinfo?.length ===9 && cardinfo?.map((el, idx) => (<div key={idx}> <Flippable_Card setcardinfo={el}/> </div>  ))}
       </div>
       <div className="CardFlipperPage_OptionsBar">
         <button className="CardFlipperPage_button button" onClick={toPackList} >Buy Another Pack</button>

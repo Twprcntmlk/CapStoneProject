@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.models import db, User, Card, Comment
 from flask_login import current_user, login_required
 from sqlalchemy.sql.expression import func
+import random
 import requests
 
 external_routes = Blueprint('external', __name__)
@@ -17,6 +18,37 @@ def get_card_api_info_cardset():
     reslist = response.json()
     return {'data': reslist}
 
+@external_routes.route('/getcardsetCard/<int:api_set_code>')
+def get_cards_api_info():
+    response = requests.get(f'https://db.ygoprodeck.com/api/v7/cardsetsinfo.php?setcode={api_set_code}')
+    reslist = response.json()
+    return {'data': reslist}
+
+@external_routes.route('/getninerandomcardsinset/<api_set_code>')
+def get_radnom_cards__in_set(api_set_code):
+    print ("AM I HERE??????????????????????????????????????????????")
+    allcards = []
+
+    while len(allcards) < 9:
+        counter = random.randint(0, 120)
+        stringcounter = str(counter)
+        while len(stringcounter) < 3:
+            stringcounter = '0'+ stringcounter
+        print("THIS FEELS WRONG_______",stringcounter)
+
+        response = requests.get(f'https://db.ygoprodeck.com/api/v7/cardsetsinfo.php?setcode={api_set_code}-{stringcounter}')
+        print(response)
+        responseCard = response.json()
+        if "error" in responseCard.keys():
+            continue
+        else:
+            print(responseCard)
+            allcards.append(responseCard)
+    return {'data': allcards}
+
+
+    #
+    # return {'data': reslist}
 # @card_routes.route('/<int:card_id>')
 # def get_deck_cards(card_id):
 #     Cards = db.session.query(Card).filter(Card.api_id == card_id)

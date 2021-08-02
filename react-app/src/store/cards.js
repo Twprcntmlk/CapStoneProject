@@ -39,17 +39,17 @@ const EDIT_CARD = "card/EDIT_CARD";
   };
 
 
-  export const addCard = (api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price) => async (dispatch) => {
+  export const addCard = (api_id, api_name, api_set_name, api_set_code, api_set_rarity, api_set_price) => async (dispatch) => {
     const response = await fetch(`/api/cards/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price })
+      body: JSON.stringify({api_id, api_name, api_set_name, api_set_code, api_set_rarity, api_set_price })
     })
     const data = await response.json();
     if (data && data.errors) {
-      return data;
+      return data.errors;
     }
     dispatch(addCardAction(data.cards));
   }
@@ -73,7 +73,7 @@ const EDIT_CARD = "card/EDIT_CARD";
 
 
   export const deleteCard = (cardId) => async (dispatch) => {
-    const response = await fetch(`/api/cards/${cardId}`, {
+    const response = await fetch(`/api/cards/${cardId}/`, {
       method: "DELETE"
     });
     console.log(cardId)

@@ -20,11 +20,20 @@ const Pack_List_Page = () => {
   //Need to Break this down, I am getting the whole API right now
   const YGOAPIFetch = async () => {
     const api = '/api/external/cardset'
-    // const api = 'https://db.ygoprodeck.com/api/v7/cardsets.php'
     const response = await fetch(api);
     const jsonData = await response.json();
     const jsonDataList = jsonData.data
-    const filteredjsonData = jsonDataList.filter((el)=> (el.set_name === "Legend of Blue Eyes White Dragon") || (el.set_name === "Metal Raiders") || (el.set_name === "Magic Ruler") || (el.set_name === "Pharaoh's Servant") || (el.set_name === "Labyrinth of Nightmare") || (el.set_name === "Legacy of Darkness") || (el.set_name === "Pharaonic Guardian") || (el.set_name === "Magician's Force") || (el.set_name === "Dark Crisis") || (el.set_name === "Invasion of Chaos"))
+    const filteredjsonData = jsonDataList.filter((el)=>
+      (el.set_name === "Legend of Blue Eyes White Dragon") ||
+      (el.set_name === "Metal Raiders") ||
+      (el.set_name === "Magic Ruler") ||
+      (el.set_name === "Pharaoh's Servant") ||
+      (el.set_name === "Labyrinth of Nightmare") ||
+      (el.set_name === "Legacy of Darkness") ||
+      (el.set_name === "Pharaonic Guardian") ||
+      (el.set_name === "Magician's Force") ||
+      (el.set_name === "Dark Crisis") ||
+      (el.set_name === "Invasion of Chaos"))
     setYgocardsets(filteredjsonData);
   };
 
@@ -50,7 +59,7 @@ const Pack_List_Page = () => {
       <div className = 'PackListPage_Container'>
         {ygocardsets?.map((el, idx) => (
         <div className="PackListPage_Card" key={idx}>
-          <a className="PackListPage_Pack" onClick={onbuyCard} href={`/pack-opener/${el.set_name}` }>
+          <a className="PackListPage_Pack" onClick={onbuyCard} href={`/pack-opener/${el.set_code}` }>
               <img src ={`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
           </a>
           <div >
