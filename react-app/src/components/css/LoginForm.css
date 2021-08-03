@@ -1,0 +1,12 @@
+.LoginForm_Container--Form{
+    display:flex;
+    flex-direction: column;
+}
+
+/* .LoginForm_Container--Form button{
+    display:flex;
+ } */
+.SignUpSignInModal_buttons{
+    display:flex;
+    justify-content: space-evenly;
+}
