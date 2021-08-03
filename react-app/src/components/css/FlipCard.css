@@ -10,6 +10,11 @@
 
 }
 
+.CardOpenerPage_Card:hover{
+  border: 2px solid;
+  color: black;
+}
+
 .CardOpenerPage_CardDiv div{
   font-size:1.2em;
   display:flex;

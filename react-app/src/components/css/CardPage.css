@@ -6,6 +6,7 @@
     background-position: center top;
     background-position: fixed top;
     color:white;
+    height: 100%;
 }
 
 .CardInfoPage_Info{
@@ -89,4 +90,13 @@ textarea{
 #CardInfo--row1 div{
     display:flex;
     align-items: center;
+}
+
+.CardInfoPage_OptionsBar{
+    display:flex;
+    justify-content:center;
+}
+
+.CardInfoPage_button{
+    margin: 5% 5% 0% 5%
 }

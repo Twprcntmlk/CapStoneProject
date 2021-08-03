@@ -32,9 +32,9 @@ const CardComment = ({APIid}) => {
     const allCommentsList = Object?.values(allComments)
     const ThisCardComments = allCommentsList?.filter((el)=>(el.card_id === ThisCard[0]?.id ))
 
-    console.log("This card",allCardList)
-    console.log("This card comments",ThisCard )
-    console.log("ThisCardComments",ThisCardComments)
+    // console.log("This card",allCardList)
+    // console.log("This card comments",ThisCard )
+    // console.log("ThisCardComments",ThisCardComments)
 
     const updateComment = (e) => {
       setComment(e.target.value)

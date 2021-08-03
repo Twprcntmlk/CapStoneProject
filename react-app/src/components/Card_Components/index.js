@@ -100,11 +100,11 @@ const CardPage = () => {
 
       </div> */}
 
-      <div className="CardFlipperPage_OptionsBar">
-        <button className="CardFlipperPage_button button" onClick={toPackList} >Buy Another Pack</button>
-        <button className="CardFlipperPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
-        <button className="CardFlipperPage_button button" onClick={toGame} >Play a Game</button>
-        <button className="CardFlipperPage_button button" onClick={toHome} >Back to Main</button>
+      <div className="CardInfoPage_OptionsBar">
+        <button className="CardInfoPage_button button" onClick={toPackList} >Buy Another Pack</button>
+        <button className="CardInfoPage_button button" onClick={toDeckBuilder} >Go to Deck Builder</button>
+        <button className="CardInfoPage_button button" onClick={toGame} >Play a Game</button>
+        <button className="CardInfoPage_button button" onClick={toHome} >Back to Main</button>
       </div>
     </div>
 
