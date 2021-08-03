@@ -77,7 +77,7 @@ const CardFlipperPage = () => {
       <div className="CardFlipperPage_Header">
         <h1>Yu-Gi-Oh! Pack Opener</h1>
         <h4>A virtual Yu-Gi-Oh! Pack Opener. Can you Pull the Big Rares?</h4>
-        <h1>{name['code']}</h1>
+        <h1>{cardinfo && cardinfo[0]?.set_name}</h1>
       </div>
       <div className="CardFlipperPage_Body">
       {cardinfo?.length ===9 && cardinfo?.map((el, idx) => (<div key={idx}> <Flippable_Card setcardinfo={el}/> </div>  ))}

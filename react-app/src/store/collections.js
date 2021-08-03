@@ -1,4 +1,4 @@
-import getAllUsers from "./session"
+import getAllUsers from "./users"
 
 const GET_COLLECTION = "channel/GET_COLLECTION";
 const ADD_COLLECTION = "channel/ADD_COLLECTION ";
@@ -42,11 +42,11 @@ const ADD_COLLECTION = "channel/ADD_COLLECTION ";
 
     if (data && data.errors) {
       console.log(data.errors)
-      return {}
-
+      return data.errors
     }
-    else {
-      dispatch(getAllUsers())
+    else{
+      console.log(data.collection)
+      // dispatch(getAllUsers())
       // dispatch(addCollectionAction(data.collections));
     }
   }
