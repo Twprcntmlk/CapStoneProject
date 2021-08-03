@@ -97,7 +97,7 @@ const Flippable_Card = ({setcardinfo}) => {
             {apicardinfo?.map((el, idx) => (
             <div key={idx} onClick={toCard}>
                 <img className="CardOpenerPage_Card" src={el.card_images[0].image_url} />
-                <div><b>Click above for details</b></div>
+                <h5>Click Above For Details</h5>
                 <div><b>{setcardinfo.set_rarity}</b></div>
                 <div><b>${price}</b></div>
             </div>
