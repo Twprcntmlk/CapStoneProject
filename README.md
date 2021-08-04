@@ -1,3 +1,19 @@
+# Welcome to Yu-Gi-Oh Gacha
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Flask React Project
 
 This is the backend for the Flask React project.
