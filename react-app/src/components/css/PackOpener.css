@@ -5,10 +5,9 @@
     align-items:center;
     font-size: 1.6em;
     background-image: url('../images/Background.jpg');
-    background-repeat: no-repeat;
     background-position: center top;
     background-position: fixed top;
-    
+    max-height: 1000vh;
 }
 
 .PackListPage_Title{
@@ -40,7 +39,7 @@
     margin-bottom: 1%;
     margin-top: 2%;
     align-items:center;
-    margin-left: 3%;
+    margin-left: 2%;
 }
 .PackListPage_Card a{
     display:flex;

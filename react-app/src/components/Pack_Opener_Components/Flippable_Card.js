@@ -14,19 +14,15 @@ const Flippable_Card = ({setcardinfo}) => {
     const [apicardinfo, setApicardinfo] = useState()
     const [price, setPrice] = useState()
     const [flippedstate, setFlippedstate] = useState()
-    const [cardinfo, setCardinfo] = useState()
-
-    console.log("THISNINERANDOMCARDINFO",setcardinfo)
-
+    // const [cardinfo, setCardinfo] = useState()
+    // console.log("THISNINERANDOMCARDINFO",setcardinfo)
     // let randomCard = id[random]
     // console.log(randomCard)
-
     const YGOAPIFetch = async () => {
         const api = `/api/external/searchcard/${setcardinfo.id}`
         const response = await fetch(api);
         const jsonData = await response.json();
         setApicardinfo(jsonData.data);
-
     };
 
     const adjustPriceString = () =>{
@@ -49,12 +45,6 @@ const Flippable_Card = ({setcardinfo}) => {
         }
     }
 
-    useEffect(() =>{
-        YGOAPIFetch()
-        // CardFetch()
-        adjustPriceString()
-    },[]);
-
     const CardFetch = async () => {
         const api = `/api/cards/${setcardinfo.id}` //http://localhost:5000/api/cards/${id}
         const response = await fetch(api);
@@ -65,7 +55,7 @@ const Flippable_Card = ({setcardinfo}) => {
         dispatch(addCollection(Acard[0].id));
     };
 
-    console.log("This is card info",apicardinfo);
+    // console.log("This is card info",apicardinfo);
     // console.log("cardinfo", cardinfo)
 
     let handleClick = async () => {
@@ -77,15 +67,18 @@ const Flippable_Card = ({setcardinfo}) => {
         let api_set_rarity = setcardinfo.set_rarity
         let api_set_price = setcardinfo.set_price
         let response = await dispatch(addCard(api_id,api_name,api_set_name,api_set_code,api_set_rarity,api_set_price))
-
         CardFetch()
-
       }
 
     const toCard = () => {
         history.push(`/card/${apicardinfo[0].id}`);
       }
 
+    useEffect(() =>{
+        YGOAPIFetch()
+        // CardFetch()
+        adjustPriceString()
+    },[]);
 
   return (
     <div className="CardOpenerPage">

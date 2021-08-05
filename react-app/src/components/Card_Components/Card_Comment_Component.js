@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,Redirect,useHistory   } from 'react-router-dom';
+// import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
 import {addComment} from "../../store/comments"
-import {editComment} from "../../store/comments"
-import {deleteComment} from "../../store/comments"
+// import {editComment} from "../../store/comments"
+// import {deleteComment} from "../../store/comments"
 import {getComments} from "../../store/comments"
 import CardForm from "./Card_Form"
-import LevelStar from "../images/levelstar.png"
+// import LevelStar from "../images/levelstar.png"
 import "../css/CardPage.css"
 
 
@@ -48,8 +48,6 @@ const CardComment = ({APIid}) => {
     //     setErrors(data.errors);
     //   }
     }
-
-
 
     // const onCommentDelete = async (e) =>{
     //     const comment_id = e.target.value

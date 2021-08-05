@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams,Redirect,useHistory   } from 'react-router-dom';
+import { useDispatch} from "react-redux"; // useSelector
+import { useParams,useHistory   } from 'react-router-dom'; //,Redirect
 import {getCards} from "../../store/cards"
-import {addComment} from "../../store/comments"
-import {editComment} from "../../store/comments"
-import {deleteComment} from "../../store/comments"
+// import {addComment} from "../../store/comments"
+// import {editComment} from "../../store/comments"
+// import {deleteComment} from "../../store/comments"
 import {getComments} from "../../store/comments"
 import CardComment from "./Card_Comment_Component"
 import LevelStar from "../images/levelstar.png"
@@ -53,7 +53,7 @@ const CardPage = () => {
       dispatch(getCards())
     },[]);
 
-    const monsterType = apicardinfo?.type
+    // const monsterType = apicardinfo?.type
 
 
    return (
@@ -107,13 +107,6 @@ const CardPage = () => {
         <button className="CardInfoPage_button button" onClick={toHome} >Back to Main</button>
       </div>
     </div>
-
-// : "Skull Servant"
-// api_set_code: "LOB-004"
-// api_set_name: "Legend of Blue Eyes White Dragon"
-// api_set_price: "2.88"
-// api_set_rarity: "Common"
-
   );
 };
 

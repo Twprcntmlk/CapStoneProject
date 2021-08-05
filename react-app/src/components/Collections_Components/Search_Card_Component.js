@@ -50,12 +50,6 @@ console.log(apicardinfo?.card_images[0].image_url)
             <img className="SearchedCardContainer_Image" src={apicardinfo?.card_images[0].image_url} draggable="false" />
         </div>
     </div>
-// : "Skull Servant"
-// api_set_code: "LOB-004"
-// api_set_name: "Legend of Blue Eyes White Dragon"
-// api_set_price: "2.88"
-// api_set_rarity: "Common"
-
   );
 };
 

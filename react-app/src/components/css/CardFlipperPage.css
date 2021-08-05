@@ -36,3 +36,14 @@
 .CardFlipperPage_button{
     margin: 0% 5% 5% 5%
 }
+
+.loadingBar{
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+}
+
+.loadingBar_Title{
+    font-size: 4em;
+    color:white;
+}

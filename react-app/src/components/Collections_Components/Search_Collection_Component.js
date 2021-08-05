@@ -58,13 +58,13 @@ const SearchBar= () => {
         < Deck_Area id="deck-2" className="deck" draggable='true'>
 
          {usercollectionfiltered ? usercollectionfiltered?.map((el, idx) =>(
-            <div key={el.api_id}>
+            <div className="cardholder" key={el.api_id}>
               <Card className="card" id={`$card-${el.api_id}`}  draggable='true' >
                 <SearchedCard api_id={el.api_id} />
               </Card>
             </div>
             )) : usercollection?.map((el, idx) =>(
-              <div key={el.api_id}>
+              <div className="cardholder"key={el.api_id}>
                 <Card className="card" id={`$card-${el.api_id}`} draggable='true' >
                   <SearchedCard api_id={el.api_id} />
                 </Card>
