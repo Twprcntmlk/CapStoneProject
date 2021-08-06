@@ -18,9 +18,11 @@ const LoginForm = ({setShowModal, setformState}) => {
     if (data.errors) {
       setErrors(data.errors);
     }
-    setShowModal(prev=> !prev)
+    setTimeout(() =>{
+      setShowModal(prev=> !prev)
+    },10000)
   };
-
+//
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -53,9 +55,7 @@ const LoginForm = ({setShowModal, setformState}) => {
         <h3 className="ButtonLink" >Login In</h3>
         <form onSubmit={onLogin}>
           <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
+            {errors.map((error) => (<div>{error}</div>))}
           </div>
           <div>
             <label htmlFor="email">Email</label>

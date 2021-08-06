@@ -68,7 +68,7 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password']
         )
-
+        print(validation_errors_to_error_messages(form.errors))
         db.session.add(user)
         db.session.commit()
 

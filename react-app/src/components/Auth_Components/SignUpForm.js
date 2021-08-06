@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -10,15 +10,27 @@ const SignUpForm = ({setShowModal, setformState}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    if(password !== repeatPassword){
+      setErrors(["Password Do Not Match"])
+    } else{
       const data = await dispatch(signUp(username, email, password));
+      if (data.errors) {
+        setErrors(data.errors);
+      }
+      setTimeout(() => {
+        setShowModal(prev=> !prev)
+      },10000)
     }
-    setShowModal(prev=> !prev)
-  };
+  }
 
+  //
+  //
+  //   setErrors(["Password to not match"])
+  // }
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -47,6 +59,9 @@ const SignUpForm = ({setShowModal, setformState}) => {
   return (
     <div>
       <h3 className="ButtonLink" >Sign Up</h3>
+      <div>
+        {errors.map((error) => (<div>{error}</div>))}
+      </div>
       <form onSubmit={onSignUp}>
         <div>
           <label>User Name</label>

@@ -8,14 +8,12 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    f_name = db.Column(db.String(40), nullable=False)
-    l_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_image = db.Column(db.String(255))
     coin_balance = db.Column(db.Integer, nullable=False)
-    admin = db.Column(db.Boolean, default=True, nullable=False)
+    admin = db.Column(db.Boolean, default=True)
 
     # collections = db.relationship('Collection', back_populates='users')
     decks = db.relationship('Deck', cascade="all,delete", back_populates='users')

@@ -70,8 +70,8 @@ export const signUp = (username, email, password) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    if (data.errors) {
-        return
+    if (data && data.errors) {
+        return data
     }
     dispatch(setUser(data))
 }
