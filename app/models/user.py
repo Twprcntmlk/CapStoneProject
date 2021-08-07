@@ -29,8 +29,6 @@ class User(db.Model, UserMixin):
 
         return {
             "id": self.id,
-            "f_name": self.f_name,
-            "l_name": self.l_name,
             "username": self.username,
             "email": self.email,
             "hashed_password": self.hashed_password,
