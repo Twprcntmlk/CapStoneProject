@@ -47,7 +47,7 @@ const SearchBar= () => {
             <input
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder="Search by Card Name"
               value={cardname}
               onChange={updateCardname}
               className='collection_input'
