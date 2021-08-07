@@ -95,6 +95,7 @@ textarea{
 .CardInfoPage_OptionsBar{
     display:flex;
     justify-content:center;
+    margin-bottom: 8.1%;
 }
 
 .CardInfoPage_button{
