@@ -11,10 +11,10 @@ Yu-Gi-Oh Gacha is a Gacha Game (Toy-Vending Machine Clone), that allows
 * [User Stories](https://github.com/Twprcntmlk/CapStoneProject/wiki/User-Stories)
 
 ## Splash Page
-<img src="./react-app/src/components/images/YGOSplashGIF.gif" width=852px height=489px>
+<img src="./react-app/src/components/images/YGOSplashGIF.gif" width=854px height=480px>
 
 ## Card Flip Page
-<img src="./react-app/src/components/images/YGOGachaCardFlipGIF.gif" width=852px height=489px>
+<img src="./react-app/src/components/images/YGOGachaCardFlipGIF.gif" wwidth=854px height=480px>
 
 ## Collections Page
-<img src="./react-app/src/components/images/YGOGachaCollectionsGIF.gif" width=852px height=489px>
+<img src="./react-app/src/components/images/YGOGachaCollectionsGIF.gif" width=854px height=480px>
