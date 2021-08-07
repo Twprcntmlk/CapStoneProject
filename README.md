@@ -17,4 +17,4 @@ Yu-Gi-Oh Gacha is a Gacha Game (Toy-Vending Machine Clone), that allows
 <img src="./react-app/src/components/images/YGOGachaCardFlipGIF.gif" width=852px height=489px>
 
 ## Collections Page
-<img src="./react-app/src/components/image/YGOGachaCollectionsGIF.gif" width=852px height=489px>
+<img src="./react-app/src/components/images/YGOGachaCollectionsGIF.gif" width=852px height=489px>
