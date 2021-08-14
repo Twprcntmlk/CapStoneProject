@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams,Redirect,useHistory   } from 'react-router-dom';
 import {getCards} from "../../store/cards"
+import {editUserBuy} from "../../store/users"
 import Flippable_Card from "./Flippable_Card"
 import LoadingBar from "../images/LoadingBar.gif"
 import "../css/CardFlipperPage.css"
@@ -11,6 +12,7 @@ const CardFlipperPage = () => {
   const history = useHistory();
   const name = useParams();
   const [cardinfo, setCardinfo] = useState()
+  const [point, setPoints] = useState(1)
 
   //   const CardsetinfoFetch = async () => {
   //     const api = `/api/getcardsetCard/${name['code']}` //http://localhost:5000/api/cards/${id}
@@ -57,7 +59,7 @@ const CardFlipperPage = () => {
 
   useEffect(() =>{
     dispatch(getCards())
-
+    dispatch(editUserBuy(point))
   },[dispatch]);
 
 

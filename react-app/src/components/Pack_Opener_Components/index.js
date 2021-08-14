@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "../css/PackOpener.css"
-import {editUserBuy} from "../../store/users"
+
 import {getAllUsers} from "../../store/users"
 import LoadingBar from "../images/LoadingBar.gif"
 
@@ -15,7 +15,8 @@ const Pack_List_Page = () => {
   const thisuser = userObj.filter((el) => el.id === user_id )
 
   const [ygocardsets, setYgocardsets] = useState()
-  const [point, setPoints] = useState(1)
+
+
 
 
   const YGOAPIFetch = async () => {
@@ -41,9 +42,6 @@ const Pack_List_Page = () => {
   // Note to self: this works but give me packs i do not want.
   //(el.tcg_date >= "2002-03-08") && (el.tcg_date <= "2004-03-01")
 
-  const onbuyCard = async () => {
-    await dispatch(editUserBuy(point))
-  }
   useEffect(() =>{
     YGOAPIFetch()
     dispatch(getAllUsers())
@@ -61,7 +59,7 @@ const Pack_List_Page = () => {
       {ygocardsets ? <div className = 'PackListPage_Container'>
         {ygocardsets?.map((el, idx) => (
         <div className="PackListPage_Card" key={idx}>
-          <a className="PackListPage_Pack" onClick={onbuyCard} href={`/pack-opener/${el.set_code}` }>
+          <a className="PackListPage_Pack"  href={`/pack-opener/${el.set_code}` }>
               <img src ={`https://ygoprodeck.com/pics_sets/${el.set_code}.jpg`}/>
           </a>
           <div >
