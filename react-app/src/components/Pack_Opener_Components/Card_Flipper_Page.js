@@ -12,7 +12,7 @@ const CardFlipperPage = () => {
   const history = useHistory();
   const name = useParams();
   const [cardinfo, setCardinfo] = useState()
-  const [point, setPoints] = useState(1)
+  const [point, setPoints] = useState(100)
 
   //   const CardsetinfoFetch = async () => {
   //     const api = `/api/getcardsetCard/${name['code']}` //http://localhost:5000/api/cards/${id}
