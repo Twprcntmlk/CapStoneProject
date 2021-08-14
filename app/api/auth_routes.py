@@ -66,7 +66,8 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            coin_balance = 10000
         )
         print(validation_errors_to_error_messages(form.errors))
         db.session.add(user)
