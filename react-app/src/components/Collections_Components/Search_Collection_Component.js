@@ -72,8 +72,6 @@ const SearchBar= () => {
               ))}
         </Deck_Area>
         </div>
-
-
       </div>
     </div>
   );
