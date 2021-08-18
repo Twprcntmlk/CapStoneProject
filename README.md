@@ -1,7 +1,11 @@
 # Welcome to Yu-Gi-Oh Gacha
 by Stephen Choung
 
-Yu-Gi-Oh Gacha is a Gacha Game (Toy-Vending Machine Clone), that allows
+YGO Gatcha Game is a fullstack Postgres, Flask, React, Node app that lets buy packs, collect cards, build deck and use that deck to play games and earn points to repeat the process!
+
+As noted above, YGO Gatcha Game is a fullstack Postgres, Flask, React, Node application. The majority of the application logic occurs within front end's Redux store and its interactions with the Google Maps Javascript API via the react-google-maps library. YGO Gatcha Game uses pure css for styling components.
+
+The backend serves the frontend, responds to frontend requests, and fetches data from the Postgres database but most the database is from an external API.
 
 ## Table of Contents
 * [MVP Feature List](https://github.com/Twprcntmlk/CapStoneProject/wiki/MVP-Feature-List)
@@ -10,11 +14,7 @@ Yu-Gi-Oh Gacha is a Gacha Game (Toy-Vending Machine Clone), that allows
 * [Front End Routes](https://github.com/Twprcntmlk/CapStoneProject/wiki/Frontend-Routes)
 * [User Stories](https://github.com/Twprcntmlk/CapStoneProject/wiki/User-Stories)
 
-YGO Gatcha Game is a fullstack Postgres, Flask, React, Node app that lets the user explore rentals all around the world and book them
 
-As noted above, YGO Gatcha Game is a fullstack Postgres, Flask, React, Node application. The majority of the application logic occurs within front end's Redux store and its interactions with the Google Maps Javascript API via the react-google-maps library. YGO Gatcha Game uses pure css for styling components.
-
-The backend serves the frontend, responds to frontend requests, and fetches data from the Postgres database.
 
 ## Frontend Overview
 YGO Gatcha Game is very frontend heavy application. It makes extensive use of 3rd-party APIs and resources to create a dynamic and data-rich experience. Below are the frontend technologies that make this application possible.
